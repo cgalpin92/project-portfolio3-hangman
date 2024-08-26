@@ -26,7 +26,28 @@ def display_rules():
     list_rules = rules.get_all_values()
     for i in list_rules:
         print(i)
-"""  
+""" 
+def home():
+    print("Welcome to Hangman\n")
+    print("Please choose an option below to proceed\n")
+    print("Option 1: Rules\n")
+    print("Option 2: Play Game\n")
+
+    option = input("Enter option here:")
+
+    option_data = int(option)
+
+    if option_data == 1:
+        display_rules()
+    elif option_data == 2:
+        print("ready to play")
+    else:
+        print("Please enter a valid option\n")
+        home()
+
+    
+    
+
 def display_rules():
     """
     Displays the rules when called
@@ -177,6 +198,8 @@ HANGMAN = [
     ---------------
     """
 ]
-print(HANGMAN[11])
+#print(HANGMAN[11])
 
-display_rules()
+#display_rules()
+
+home()
