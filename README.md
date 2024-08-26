@@ -60,6 +60,7 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 
 ### Content
 - Words for computer to generate taken from Hangman Words - https://www.hangmanwords.com/words.
+- Tutorial on how to create the hangman gallows steps taken from Stack Exchange - https://codereview.stackexchange.com/questions/95997/simple-game-of-hangman
 
 ### Code
 - API settings taken from the Love Sandwiches walkthrough project.

@@ -16,7 +16,13 @@ SHEET = GSPREAD_CLIENT.open('hangman_words')
 
 words = SHEET.worksheet('words')
 
-all_words = words.get_all_values()
+rules = SHEET.worksheet('rules')
+
+#all_words = words.get_all_values()
+
+display_rules = rules.get_all_values()
+
+
 
 HANGMAN = [
     """
@@ -157,3 +163,5 @@ HANGMAN = [
     """
 ]
 print(HANGMAN[11])
+
+print(display_rules)
