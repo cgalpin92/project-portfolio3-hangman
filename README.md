@@ -1,32 +1,65 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# HANGMAN
+Hangman is a Python Terminal game which runs in the Code Institute mock terminal Heroku.
 
-Welcome,
+Users will play against the computer. The computer will generate a random word and display this as dashes. The user will then try to work out what the word is by guessing individual letters. Each time they guess an incorrect letter a section of the Hangman's gallows is added.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+The goal of the game is for the user to guess the word before the Hangman's gallows are complete.
 
-## Reminders
+## How to play
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## Features
 
-## Creating the Heroku app
+### Existing Features
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Future Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Data Model
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Testing
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Validator Testing
 
-Connect your GitHub repository and deploy as normal.
+### Bugs
 
-## Constraints
+- __Fixed Bugs__
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+- __Unfixed Bugs__
 
----
+## Deployment
 
-Happy coding!
+This project was deployed using the Code Institute's mock terminal for Heroku.
+
+- __Steps for deployment:__
+    - Fork or clone this repository
+    - Create a new Heroku app
+        - Login to Heroku and select __Create New App__
+        - Create app name
+        - Select your __region__
+        - Select __Create App__
+    - Change Heroku Settings
+        - Select __Settings__
+        - Scroll down to __Config Var__ section and select __reveal config var__
+        - Enter the following information into the __Key__ and __value__ inputs:
+            - __Key:__ CREDS
+            - __Value:__ Copy all content from the creds.json file and paste into the values box.
+        - Select __Add__
+        - Add another config var with the following information:
+            - __Key:__ PORT
+            - __Value:__ 8000
+        - Create buildbacks: _needs to be created in this order_
+            - Select __Add buildbacks__
+            - Select __Python__
+            - Save Changes
+            - Select __Add buildbacks__
+            - Select __NodeJS__
+            - Save Changes        
+    - Link the Heroku app to the repository
+    - Click on __Deploy__
+
+## Credits
+
+### Content
+- Words for computer to generate taken from Hangman Words - https://www.hangmanwords.com/words.
+
+### Code
+- API settings taken from the Love Sandwiches walkthrough project.
