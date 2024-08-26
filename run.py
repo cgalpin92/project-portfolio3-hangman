@@ -20,7 +20,12 @@ rules = SHEET.worksheet('rules')
 
 #all_words = words.get_all_values()
 
-display_rules = rules.get_all_values()
+#display_rules = rules.get_all_values()
+
+def display_rules():
+    list_rules = rules.get_all_values()
+    for i in list_rules:
+        print(i)
 
 
 
@@ -164,4 +169,4 @@ HANGMAN = [
 ]
 print(HANGMAN[11])
 
-print(display_rules)
+display_rules()
