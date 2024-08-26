@@ -16,8 +16,6 @@ SHEET = GSPREAD_CLIENT.open('hangman_words')
 
 words = SHEET.worksheet('words')
 
-
-
 #all_words = words.get_all_values()
 
 #display_rules = rules.get_all_values()
@@ -30,6 +28,9 @@ def display_rules():
         print(i)
 """  
 def display_rules():
+    """
+    Displays the rules when called
+    """
     print("The Computer will select a Random Word and display a list of dashes to represent that word\n")
     print("Your aim is to guess what the Random Word is by entering one letter at a time\n")
     print("Enter any letter between 'a' and 'z' where indicated\n")

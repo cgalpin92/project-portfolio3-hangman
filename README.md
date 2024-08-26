@@ -7,6 +7,12 @@ The goal of the game is for the user to guess the word before the Hangman's gall
 
 ## How to play
 
+The Computer will select a Random Word and display a list of dashes to represent that word
+The player's aim is to guess what the Random Word is by entering one letter, between 'a' and 'z', at a time 
+If the letter is correct it will appear in the correct space within the word
+If the letter is incorrect a section of the Hangman's Gallows will be added
+The player will have 11 attempts to guess the correct word before the Hangman's Gallows are complete at which point the player looses the game
+
 ## Features
 
 ### Existing Features
@@ -61,6 +67,7 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 ### Content
 - Words for computer to generate taken from Hangman Words - https://www.hangmanwords.com/words.
 - Tutorial on how to create the hangman gallows steps taken from Stack Exchange - https://codereview.stackexchange.com/questions/95997/simple-game-of-hangman
+- Idea for displaying Rules as print statements taken from existing python hangman game - https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py
 
 ### Code
 - API settings taken from the Love Sandwiches walkthrough project.
