@@ -2,6 +2,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
+import random
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,7 +15,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_words')
 
-words = SHEET.worksheet('words')
 
 #all_words = words.get_all_values()
 
@@ -27,38 +27,6 @@ def display_rules():
     for i in list_rules:
         print(i)
 """ 
-def home():
-    print("Welcome to Hangman\n")
-    print("Please choose an option below to proceed\n")
-    print("Option 1: Rules\n")
-    print("Option 2: Play Game\n")
-
-    option = input("Enter option here:")
-
-    option_data = int(option)
-
-    if option_data == 1:
-        display_rules()
-    elif option_data == 2:
-        print("ready to play")
-    else:
-        print("Please enter a valid option\n")
-        home()
-
-    
-    
-
-def display_rules():
-    """
-    Displays the rules when called
-    """
-    print("The Computer will select a Random Word and display a list of dashes to represent that word\n")
-    print("Your aim is to guess what the Random Word is by entering one letter at a time\n")
-    print("Enter any letter between 'a' and 'z' where indicated\n")
-    print("If the letter is correct it will appear in the correct space within the word\n")
-    print("If the letter is incorrect a section of the Hangman's Gallows will be added\n")
-    print("You will have 11 attempts to guess the correct word before the Hangman's Gallows are complete and you loose the game\n")
-
 
 HANGMAN = [
     """
@@ -198,8 +166,51 @@ HANGMAN = [
     ---------------
     """
 ]
+
+
+
+def home():
+    print("Welcome to Hangman\n")
+    print("Please choose an option below to proceed\n")
+    print("Option 1: Rules\n")
+    print("Option 2: Play Game\n")
+
+    option = input("Enter option here:")
+
+    option_data = int(option)
+
+    if option_data == 1:
+        display_rules()
+    elif option_data == 2:
+        print("ready to play")
+        random_word()
+    else:
+        print("Please enter a valid option\n")
+        home()
+
+
+def display_rules():
+    """
+    Displays the rules when called
+    """
+    print("The Computer will select a Random Word and display a list of dashes to represent that word\n")
+    print("Your aim is to guess what the Random Word is by entering one letter at a time\n")
+    print("Enter any letter between 'a' and 'z' where indicated\n")
+    print("If the letter is correct it will appear in the correct space within the word\n")
+    print("If the letter is incorrect a section of the Hangman's Gallows will be added\n")
+    print("You will have 11 attempts to guess the correct word before the Hangman's Gallows are complete and you loose the game\n")
+
+def random_word():
+    words = SHEET.worksheet('words')
+    all_words = words.get_all_values()
+    print(random.choice(all_words))
+
+
+
 #print(HANGMAN[11])
 
 #display_rules()
+def run_game():
+    home()
 
-home()
+run_game()
