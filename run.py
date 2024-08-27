@@ -183,7 +183,7 @@ def home():
         display_rules()
     elif option_data == 2:
         print("ready to play")
-        random_word()
+        play()
     else:
         print("Please enter a valid option\n")
         home()
@@ -200,13 +200,18 @@ def display_rules():
     print("If the letter is incorrect a section of the Hangman's Gallows will be added\n")
     print("You will have 11 attempts to guess the correct word before the Hangman's Gallows are complete and you loose the game\n")
 
-def random_word():
+
+
+def play():
     words = SHEET.worksheet('words')
-    all_words = words.get_all_values()
-    print(random.choice(all_words))
+    all_words = words.col_values(1)
+    random_word = random.choice(all_words)
+    hidden_word = " _ " * len(random_word)
+    print(hidden_word)
 
+        
 
-
+    
 #print(HANGMAN[11])
 
 #display_rules()

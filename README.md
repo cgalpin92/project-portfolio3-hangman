@@ -29,6 +29,11 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
 
 - __Fixed Bugs__
 
+ - error in terminal when running the random word function. When calling the random_word function had stated print(random.choice(all_words)), when calling this in the terminal received the error "name 'random' is not defined. Did you forget to import 'random'"?
+    - imported random at the top of run.py
+    - re-ran the function and this time function worked and random word was selected
+    - re-ran the function a couple of times and each time a new random word was selected
+
 - __Unfixed Bugs__
 
 ## Deployment
