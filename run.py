@@ -216,6 +216,7 @@ def play():
 
     if guess not in valid_input:
         print("you must enter a letter\n")
+        guess = input("Enter Letter Below: \n")
 
 
     

@@ -17,6 +17,25 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
 
 ### Existing Features
 
+- __Landing Page__
+    - The landing page consists of a Welcome Message and asking the player to either choose to view the rules or play the game.
+- __Rules__
+    - When selecting Option 1 the Rules for the game are listed
+- __Play Game__
+    - When selecting Option 2 the Game starts. 
+    
+        The player will be presented with a message "ready to play". 
+
+        A list of dashes will represent the word that the computer has randomly selected.
+
+        An input will appear asking the player to enter a letter
+
+        If a number or special character is entered instead of a letter then a message will appear stating the player must enter a letter.
+
+        If a letter is entered and matches a letter within the hidden word then that letter will appear within the hidden word section
+
+        If a letter is entered that does not match a letter within the hidden word then a section of the hangman's gallows appears. This will continue until a correct letter is entered.
+
 ### Future Features
 
 ## Data Model
@@ -29,11 +48,16 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
 
 - __Fixed Bugs__
 
- - error in terminal when running the random word function. When calling the random_word function had stated print(random.choice(all_words)), when calling this in the terminal received the error "name 'random' is not defined. Did you forget to import 'random'"?
-    - imported random at the top of run.py
-    - re-ran the function and this time function worked and random word was selected
-    - re-ran the function a couple of times and each time a new random word was selected
-
+    - error in terminal when running the random word function. When calling the random_word function had stated print(random.choice(all_words)), when calling this in the terminal received the error "name 'random' is not defined. Did you forget to import 'random'"?
+        - imported random at the top of run.py
+        - re-ran the function and this time function worked and random word was selected
+        - re-ran the function a couple of times and each time a new random word was selected
+    
+    - Error replacing the random selected word with dashes to keep the word hidden.
+        - First issue was that nothing appeared when function was called. No random word selected. I realised I had missed the print method at the end of the function. Added this in.
+        - Now when the function was called a single dash appeared. Had intended this to be a dash for each character of the chosen word. Current variable written as hidden_word = "_" * len(all_words). Researched online and surmised issue may be to do with the previous variable all_words = words.get_all_values(). This returns a list data type e.g. ['zigzag']. I believe the length of this was being perceived as a value of 1. Changed the value to all_words = words.col_values(1). This returns a string data type, e.g. zigzag. This hidden_word variable now returns dashes for each individual letter of the selected word e.g. _ _ _ _ _ _
+    
+    
 - __Unfixed Bugs__
 
 ## Deployment
@@ -76,3 +100,4 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 
 ### Code
 - API settings taken from the Love Sandwiches walkthrough project.
+- Code for displaying the randomly selected word from the google worksheet as a series of dashes for the length of the word taken from existing pythong hangman game - https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py 
