@@ -175,14 +175,14 @@ def home():
     print("Option 1: Rules\n")
     print("Option 2: Play Game\n")
 
-    option = input("Enter option here:")
+    option = input("Enter option here:  \n")
 
     option_data = int(option)
 
     if option_data == 1:
         display_rules()
     elif option_data == 2:
-        print("ready to play")
+        print("\nready to play\n")
         play()
     else:
         print("Please enter a valid option\n")
@@ -206,8 +206,20 @@ def play():
     words = SHEET.worksheet('words')
     all_words = words.col_values(1)
     random_word = random.choice(all_words)
-    hidden_word = " _ " * len(random_word)
-    print(hidden_word)
+    def hidden():
+        hidden_word = " _ " * len(random_word) + "\n"
+        print(hidden_word)
+    hidden()
+
+    guess = input("Enter Letter Below: \n")
+    valid_input = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",]
+
+    if guess not in valid_input:
+        print("you must enter a letter\n")
+
+
+    
+
 
         
 
