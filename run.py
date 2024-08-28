@@ -18,53 +18,49 @@ SHEET = GSPREAD_CLIENT.open('hangman_words')
 
 HANGMAN = [
     """
-    
     """,
     """
-    
-    |         
-    |         
-    |         
-    |         
-    |         
-    |         
-    |          
     |
-    
+    |
+    |
+    |
+    |
+    |
+    |
+    |
     """,
     """
-    
-    |         
-    |         
-    |         
-    |         
-    |         
-    |         
-    |          
+    |
+    |
+    |
+    |
+    |
+    |
+    |
     |
     ---------------
     """,
     """
     -----------
-    |         
-    |         
-    |         
-    |         
-    |         
-    |         
-    |          
+    |
+    |
+    |
+    |
+    |
+    |
+    |
     |
     ---------------
     """,
     """
     -----------
     |         |
-    |         
-    |         
-    |         
-    |         
-    |         
-    |          
+    |
+    |
+    |
+    |
+    |
+    |
     |
     ---------------
     """,
@@ -72,11 +68,11 @@ HANGMAN = [
     -----------
     |         |
     |         O
-    |         
-    |         
-    |         
-    |         
-    |          
+    |
+    |
+    |
+    |
+    |
     |
     ---------------
     """,
@@ -85,10 +81,10 @@ HANGMAN = [
     |         |
     |         O
     |         +
-    |         
-    |         
-    |         
-    |          
+    |
+    |
+    |
+    |
     |
     ---------------
     """,
@@ -97,10 +93,10 @@ HANGMAN = [
     |         |
     |         O
     |      +--+
-    |         
-    |         
-    |         
-    |          
+    |
+    |
+    |
+    |
     |
     ---------------
     """,
@@ -109,22 +105,10 @@ HANGMAN = [
     |         |
     |         O
     |      +--+--+
-    |         
-    |         
-    |         
-    |          
     |
-    ---------------
-    """,
-    """
-    -----------
-    |         |
-    |         O
-    |      +--+--+
-    |         |
-    |         |
-    |         
-    |          
+    |
+    |
+    |
     |
     ---------------
     """,
@@ -135,8 +119,20 @@ HANGMAN = [
     |      +--+--+
     |         |
     |         |
-    |        | 
-    |        | 
+    |
+    |
+    |
+    ---------------
+    """,
+    """
+    -----------
+    |         |
+    |         O
+    |      +--+--+
+    |         |
+    |         |
+    |        |
+    |        |
     |
     ---------------
 
@@ -154,7 +150,6 @@ HANGMAN = [
     ---------------
     """
 ]
-
 
 
 def home():
@@ -181,20 +176,23 @@ def display_rules():
     """
     Displays the rules when called
     """
-    print("The Computer will select a Random Word and display a list of dashes to represent that word\n")
-    print("Your aim is to guess what the Random Word is by entering one letter at a time\n")
-    print("Enter any letter between 'a' and 'z' where indicated\n")
-    print("If the letter is correct it will appear in the correct space within the word\n")
-    print("If the letter is incorrect a section of the Hangman's Gallows will be added\n")
-    print("You will have 11 attempts to guess the correct word before the Hangman's Gallows are complete and you loose the game\n")
-
+    print("The Computer will select a word at random\n")
+    print("A list of dashes will appear to represent the word\n")
+    print("Your aim is to guess the word one letter at a time\n")
+    print("Enter any letter between 'a' and 'z'\n")
+    print("If you are right the letter will replace a dash\n")
+    print("If you are wrong a section of the Hangman's Gallows is added\n")
+    print("You will have 11 attempts to guess the correct word\n")
+    print("Guess before those 11 attepts are up and you win\n")
+    print("If you don't guess before the Hangman's Gallows are complete...\n")
+    print("you loose\n")
 
 
 def play():
     words = SHEET.worksheet('words')
     all_words = words.col_values(1)
     random_word = random.choice(all_words)
-    print(random_word) # Will remove once code complete
+    print(random_word)  # Will remove once code complete
     hidden_word = "_" * len(random_word) + "\n"
     print(hidden_word)
     
@@ -207,7 +205,8 @@ def play():
     
     def check_answer():
         if guess in random_word:
-            x = ''.join(guess if random_word[i] == guess else hidden_word[i] for i in range(len(random_word)))
+            x = ''.join(guess if random_word[i] == guess
+                        else hidden_word[i] for i in range(len(random_word)))
             new_hidden_word = x
             print(new_hidden_word)
         else:
@@ -215,7 +214,9 @@ def play():
                         
     check_answer()
 
+
 def run_game():
     home()
+
 
 run_game()
