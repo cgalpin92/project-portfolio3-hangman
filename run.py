@@ -16,18 +16,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_words')
 
 
-#all_words = words.get_all_values()
-
-#display_rules = rules.get_all_values()
-
-"""
-def display_rules():
-    rules = SHEET.worksheet('rules')
-    list_rules = rules.get_all_values()
-    for i in list_rules:
-        print(i)
-""" 
-
 HANGMAN = [
     """
     
@@ -206,35 +194,25 @@ def play():
     words = SHEET.worksheet('words')
     all_words = words.col_values(1)
     random_word = random.choice(all_words)
-    def hidden():
-        hidden_word = " _ " * len(random_word) + "\n"
-        print(hidden_word)
-    hidden()
+    print(random_word)
+    print(random_word[0])
+    hidden_word = "_" * len(random_word) + "\n"
+    print(hidden_word)
 
     guess = input("Enter Letter Below: \n")
-    #valid_input = isalpha()
-    #valid_input = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",]
     for i in guess:
         if i.isalpha():
             print(f"you entered {guess}\n")
         else:
             print("You must enter a letter\n")
-
-        """
-    if guess not in valid_input:
-        print("you must enter a letter\n")
-        guess = input("Enter Letter Below: \n")
-        """
-
     
+    def check_answer():
+        if guess in random_word:
+            x = ''.join(guess if random_word[i] == guess else hidden_word[i] for i in range(len(random_word)))
+        print(x)
+                        
+    check_answer()
 
-
-        
-
-    
-#print(HANGMAN[11])
-
-#display_rules()
 def run_game():
     home()
 
