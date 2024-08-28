@@ -57,6 +57,16 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
         - First issue was that nothing appeared when function was called. No random word selected. I realised I had missed the print method at the end of the function. Added this in.
         - Now when the function was called a single dash appeared. Had intended this to be a dash for each character of the chosen word. Current variable written as hidden_word = "_" * len(all_words). Researched online and surmised issue may be to do with the previous variable all_words = words.get_all_values(). This returns a list data type e.g. ['zigzag']. I believe the length of this was being perceived as a value of 1. Changed the value to all_words = words.col_values(1). This returns a string data type, e.g. zigzag. This hidden_word variable now returns dashes for each individual letter of the selected word e.g. _ _ _ _ _ _
     
+    - Error line too long in pep8 Python validator.
+        - When running an initial test within pep8 python validation, error resulted for line to long for valid_input variable. The data within this variable was a list of the letters of the alphabet to check which I was using to check against the player's guess to ensure it was a valid letter and not a number. However due to this exceeding the 79 character limit I searched online for another solution to validify a letter input. Found a suggestion to use isalpha().
+        - Initially tried changing just the value of the variable from a list of letters to isalpha(). However when running this in the terminal received the error that isalpha() is not defined.
+        - Checked online suggestion further and decided to change the if statement to a for statement and to include the isalpha() argument within this statement. Statement now states:
+            - for i in guess:
+                if i.isalpha():
+                    print(f"you entered {guess}")
+                else:
+                    print(You must enter a letter)
+        - When running this within the terminal the validation test was successfull, when entering a number the else statement runs, when entering a letter the if statment runs.
     
 - __Unfixed Bugs__
 
@@ -101,3 +111,4 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 ### Code
 - API settings taken from the Love Sandwiches walkthrough project.
 - Code for displaying the randomly selected word from the google worksheet as a series of dashes for the length of the word taken from existing pythong hangman game - https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py 
+- Code to check validation of player's guess taken from Stack Overflow - https://stackoverflow.com/questions/15558392/how-can-i-check-if-character-in-a-string-is-a-letter-python#:~:text=By%20using%20str.,if%20it%20is%20a%20letter. 
