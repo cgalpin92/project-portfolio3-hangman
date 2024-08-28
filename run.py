@@ -212,12 +212,19 @@ def play():
     hidden()
 
     guess = input("Enter Letter Below: \n")
-    valid_input = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",]
+    #valid_input = isalpha()
+    #valid_input = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",]
+    for i in guess:
+        if i.isalpha():
+            print(f"you entered {guess}\n")
+        else:
+            print("You must enter a letter\n")
 
+        """
     if guess not in valid_input:
         print("you must enter a letter\n")
         guess = input("Enter Letter Below: \n")
-
+        """
 
     
 
