@@ -194,11 +194,10 @@ def play():
     words = SHEET.worksheet('words')
     all_words = words.col_values(1)
     random_word = random.choice(all_words)
-    print(random_word)
-    print(random_word[0])
+    print(random_word) # Will remove once code complete
     hidden_word = "_" * len(random_word) + "\n"
     print(hidden_word)
-
+    
     guess = input("Enter Letter Below: \n")
     for i in guess:
         if i.isalpha():
@@ -209,9 +208,10 @@ def play():
     def check_answer():
         if guess in random_word:
             x = ''.join(guess if random_word[i] == guess else hidden_word[i] for i in range(len(random_word)))
-            print(x)
+            new_hidden_word = x
+            print(new_hidden_word)
         else:
-            print(hidden_word)
+            print(HANGMAN[1])
                         
     check_answer()
 
