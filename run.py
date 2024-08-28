@@ -209,7 +209,9 @@ def play():
     def check_answer():
         if guess in random_word:
             x = ''.join(guess if random_word[i] == guess else hidden_word[i] for i in range(len(random_word)))
-        print(x)
+            print(x)
+        else:
+            print(hidden_word)
                         
     check_answer()
 
