@@ -67,6 +67,9 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
                 else:
                     print(You must enter a letter)
         - When running this within the terminal the validation test was successfull, when entering a number the else statement runs, when entering a letter the if statment runs.
+    - Created infinate loop.
+
+
     
 - __Unfixed Bugs__
 
@@ -117,3 +120,6 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 - API settings taken from the Love Sandwiches walkthrough project.
 - Code for displaying the randomly selected word from the google worksheet as a series of dashes for the length of the word taken from existing pythong hangman game - https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py 
 - Code to check validation of player's guess taken from Stack Overflow - https://stackoverflow.com/questions/15558392/how-can-i-check-if-character-in-a-string-is-a-letter-python#:~:text=By%20using%20str.,if%20it%20is%20a%20letter. 
+- Guidance on tracking attempts taken from Stack Overflow - https://stackoverflow.com/questions/23842115/how-to-tell-user-how-many-attempts-left-in-python
+- Guidance for resolving PEP8 error "E128: Continuation line under indented for visual indent" taken from Stack Overflow - https://stackoverflow.com/questions/15435811/what-is-pep8s-e128-continuation-line-under-indented-for-visual-indent
+- Code for updating the hidden word taken from Stack Overflow - https://stackoverflow.com/questions/67609834/how-to-replace-the-specified-dash-with-the-letter
