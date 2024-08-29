@@ -310,7 +310,14 @@ def update_hidden_word():
         print(new_hidden_word)
         guess_input()
     else:
-        print("resetting random word......")
+        update_hangman()
+
+
+def update_hangman():
+    if guess != random_word:
+        print(HANGMAN[1])
+    else:
+        print("resetting picture")
 
 
 def game_play():
