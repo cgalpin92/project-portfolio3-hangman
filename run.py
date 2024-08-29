@@ -296,10 +296,22 @@ def check_guess_input():
         if i.isalpha():
             print(f"You entered {guess} \n")
             attempts_taken = attempts + 1
+            update_hidden_word()
         else:
             print("You must enter a letter\n")
             guess_input()
-    
+
+def update_hidden_word():
+    global new_hidden_word
+    if guess in random_word:
+        x = "".join(guess if random_word[i] == guess
+                    else hidden_word[i]for i in range(len(random_word)))
+        new_hidden_word = x
+        print(new_hidden_word)
+        guess_input()
+    else:
+        print("resetting random word......")
+
 
 def game_play():
     global game_play
