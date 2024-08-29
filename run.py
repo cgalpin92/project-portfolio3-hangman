@@ -232,24 +232,60 @@ def start():
     Will then proceed to start the game
     """
     print("Welcome to Hangman\n")
-    print("Welcome to Hangman\n")
     print(HANGMAN[11])
     print("what hangman game is")
     print("Please enter a username below to proceed\n")
 	
     while True:
-        username = input("Enter username here:  \n")
+        global username
+        username = input("Enter username here:  \n") 
         if username.isalpha():
             break
         elif username.isdigit():
             break
         else:
             print("You have not entered a username, please enter a username to proceed")
+    
     print("game loading...")
 
 
+def display_rules():
+    """
+    Displays the rules when called
+    """
+    print("The Computer will select a word at random\n")
+    print("A list of dashes will appear to represent the word\n")
+    print("Your aim is to guess the word one letter at a time\n")
+    print("Enter any letter between 'a' and 'z'\n")
+    print("If you are right the letter will replace a dash\n")
+    print("If you are wrong a section of the Hangman's Gallows is added\n")
+    print("You will have 11 attempts to guess the correct word\n")
+    print("Guess before those 11 attepts are up and you win\n")
+    print("If you don't guess before the Hangman's Gallows are complete...\n")
+    print("you loose\n")
+
+def start_game():
+	print(f"Hi {username}")
+	display_rules()
+
+def select_random_word():
+    words = SHEET.worksheet('words')
+    all_words = words.col_values(1)
+    global random_word
+    random_word = random.choice(all_words)
+    print(random_word)  # will remove once code complete
+
+def hide_random_word():
+    global hidden_word
+    hidden_word = "_" * len(random_word) + "\n"
+    print(hidden_word)
+
 def main():
     start()
+    start_game()
+    select_random_word()
+    hide_random_word()
+    
 
 
 main()
