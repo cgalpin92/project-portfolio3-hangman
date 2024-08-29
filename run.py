@@ -151,7 +151,7 @@ HANGMAN = [
     """
 ]
 
-
+"""
 def home():
     print("Welcome to Hangman\n")
     print("Please choose an option below to proceed\n")
@@ -173,9 +173,9 @@ def home():
 
 
 def display_rules():
-    """
-    Displays the rules when called
-    """
+    
+    #Displays the rules when called
+    
     print("The Computer will select a word at random\n")
     print("A list of dashes will appear to represent the word\n")
     print("Your aim is to guess the word one letter at a time\n")
@@ -220,3 +220,6 @@ def run_game():
 
 
 run_game()
+"""
+
+

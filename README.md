@@ -48,7 +48,7 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
 
 - __Fixed Bugs__
 
-    - error in terminal when running the random word function. When calling the random_word function had stated print(random.choice(all_words)), when calling this in the terminal received the error "name 'random' is not defined. Did you forget to import 'random'"?
+    - Error in terminal when running the random word function. When calling the random_word function had stated print(random.choice(all_words)), when calling this in the terminal received the error "name 'random' is not defined. Did you forget to import 'random'"?
         - imported random at the top of run.py
         - re-ran the function and this time function worked and random word was selected
         - re-ran the function a couple of times and each time a new random word was selected
@@ -91,14 +91,19 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
         - Add another config var with the following information:
             - __Key:__ PORT
             - __Value:__ 8000
-        - Create buildbacks: _needs to be created in this order_
-            - Select __Add buildbacks__
+        - Create buildpacks: _needs to be created in this order_
+            - Select __Add buildpacks__
             - Select __Python__
-            - Save Changes
-            - Select __Add buildbacks__
+            - Select __Add Buildpack__
+            - Select __Add buildpacks__
             - Select __NodeJS__
-            - Save Changes        
-    - Link the Heroku app to the repository
+            - Select __Add Buildpack__     
+    - Link the Heroku app to the repository:
+        - Select __Deploy__ from the top of the page.
+        - Scroll down to __Deployment method__
+        - Select __GitHub. Connect to GitHub__
+        - Enter you repository name and click search
+        - Select connect next to your repository name
     - Click on __Deploy__
 
 ## Credits
