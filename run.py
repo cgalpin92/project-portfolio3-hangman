@@ -221,7 +221,6 @@ def run_game():
 
 run_game()
 """
-attempts = 0
 
 def start():
 
@@ -267,8 +266,12 @@ def display_rules():
     print("\nstarting game...\n")
 
 def start_game():
-	print(f"Hi {username}\n")
-	display_rules()
+    global hangman_picures
+    hangman_picures = 0
+    global attempts
+    attempts = 0
+    print(f"Hi {username}\n")
+    display_rules()
 
 def select_random_word():
     words = SHEET.worksheet('words')
@@ -303,6 +306,7 @@ def check_guess_input():
 
 def update_hidden_word():
     global new_hidden_word
+    global build_pictures
     if guess in random_word:
         x = "".join(guess if random_word[i] == guess
                     else hidden_word[i]for i in range(len(random_word)))
@@ -310,12 +314,14 @@ def update_hidden_word():
         print(new_hidden_word)
         guess_input()
     else:
+        build_pictures = hangman_picures + 1
         update_hangman()
+        guess_input()
 
 
 def update_hangman():
     if guess != random_word:
-        print(HANGMAN[1])
+        print(HANGMAN[build_pictures])
     else:
         print("resetting picture")
 
