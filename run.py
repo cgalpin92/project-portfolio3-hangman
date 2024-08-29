@@ -222,4 +222,34 @@ def run_game():
 run_game()
 """
 
+def start():
 
+    """
+    Runs when terminal is launched
+    Explains what Hangman is
+    Asks the user to enter a username to proceed
+    If no username is entered will re-ask until username entered
+    Will then proceed to start the game
+    """
+    print("Welcome to Hangman\n")
+    print("Welcome to Hangman\n")
+    print(HANGMAN[11])
+    print("what hangman game is")
+    print("Please enter a username below to proceed\n")
+	
+    while True:
+        username = input("Enter username here:  \n")
+        if username.isalpha():
+            break
+        elif username.isdigit():
+            break
+        else:
+            print("You have not entered a username, please enter a username to proceed")
+    print("game loading...")
+
+
+def main():
+    start()
+
+
+main()
