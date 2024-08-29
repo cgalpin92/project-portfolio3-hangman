@@ -221,6 +221,7 @@ def run_game():
 
 run_game()
 """
+attempts = 7
 
 def start():
 
@@ -246,7 +247,7 @@ def start():
         else:
             print("You have not entered a username, please enter a username to proceed")
     
-    print("game loading...")
+    print("game loading...\n")
 
 
 def display_rules():
@@ -263,9 +264,10 @@ def display_rules():
     print("Guess before those 11 attepts are up and you win\n")
     print("If you don't guess before the Hangman's Gallows are complete...\n")
     print("you loose\n")
+    print("\nstarting game...\n")
 
 def start_game():
-	print(f"Hi {username}")
+	print(f"Hi {username}\n")
 	display_rules()
 
 def select_random_word():
@@ -277,14 +279,29 @@ def select_random_word():
 
 def hide_random_word():
     global hidden_word
+    global attempts_taken
     hidden_word = "_" * len(random_word) + "\n"
     print(hidden_word)
+    attempts_taken = attempts + 1
+
+
+def game_play():
+    global game_play
+    if attempts_taken <= 6:
+        game_play = True
+        print("True")
+    else:
+        game_play = False
+        print("False")
+
 
 def main():
     start()
     start_game()
     select_random_word()
     hide_random_word()
+    game_play()
+    
     
 
 
