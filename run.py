@@ -221,7 +221,7 @@ def run_game():
 
 run_game()
 """
-attempts = 7
+attempts = 0
 
 def start():
 
@@ -279,11 +279,27 @@ def select_random_word():
 
 def hide_random_word():
     global hidden_word
-    global attempts_taken
+    
     hidden_word = "_" * len(random_word) + "\n"
     print(hidden_word)
-    attempts_taken = attempts + 1
+    
 
+
+def guess_input():
+    global guess
+    guess = input("Enter Letter Below: \n")
+    check_guess_input()
+
+def check_guess_input():
+    global attempts_taken
+    for i in guess:
+        if i.isalpha():
+            print(f"You entered {guess} \n")
+            attempts_taken = attempts + 1
+        else:
+            print("You must enter a letter\n")
+            guess_input()
+    
 
 def game_play():
     global game_play
@@ -300,6 +316,7 @@ def main():
     start_game()
     select_random_word()
     hide_random_word()
+    guess_input()
     game_play()
     
     
