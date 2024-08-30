@@ -212,17 +212,20 @@ def start_game():
 
 
 def select_random_word():
+    """
+    selects random word from googlesheets
+    """
     words = SHEET.worksheet('words')
     all_words = words.col_values(1)
     global random_word
     random_word = random.choice(all_words)
-    print(random_word)  # will remove once code complete
+    # print(random_word)  # will remove once code complete
 
 
 def hide_random_word():
     global hidden_word
     hidden_word = "_" * len(random_word) + "\n"
-    # print(hidden_word)
+    print(hidden_word)
 
 
 def guess_input():
