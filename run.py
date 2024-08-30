@@ -198,7 +198,7 @@ def display_rules():
     print("You will have 11 attempts to guess the correct word\n")
     print("Guess before those 11 attepts are up and you win\n")
     print("If you don't guess before the Hangman's Gallows are complete...\n")
-    print("you loose\n")
+    print("and you will loose\n")
     print("\nstarting game...\n")
 
 
@@ -243,10 +243,19 @@ def guess_input():
     global attempts_taken
     if attempts_taken == 20:
         game_play = False
+        print("You have run out of attempts\n")
+        print(f"The word was {random_word}\n")
+        print("Game Over!!\n")
     elif attempts_left == 0:
         game_play = False
+        print("You have run out of attempts\n")
+        print(f"the word was {random_word}\n")
+        print("Game Over!!\n")
     elif "-" not in hidden_word:
         game_play = False
+        print("Contratulations!!\n")
+        print(f"You correctly guessed {random_word}\n")
+        print("Game Over!!\n")
     while game_play is True:   
         print('GUESS INPUT attempts_taken: ', attempts_taken)
         guess = input("Enter Letter Below: \n")
