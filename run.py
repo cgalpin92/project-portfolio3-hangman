@@ -152,10 +152,12 @@ HANGMAN = [
 ]
 
 attempts_taken = 0
+attempts_left = 11
 build_pictures = 0
 used_letters = []
 random_word = None
 hidden_word = None
+game_play = True
 
 def start():
 
@@ -236,9 +238,13 @@ def guess_input():
     creates the input for player to enter their guess
     """
     global guess
-    print('GUESS INPUT attempts_taken: ', attempts_taken)
-    guess = input("Enter Letter Below: \n")
-    check_guess_input()
+    global end_game
+    while game_play is True:   
+        print('GUESS INPUT attempts_taken: ', attempts_taken)
+        guess = input("Enter Letter Below: \n")
+        check_guess_input()
+
+
 
 
 def check_guess_input():
@@ -253,6 +259,7 @@ def check_guess_input():
     """
     global attempts_taken
     global used_letters
+    global game_play
     print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
     for i in guess:
         if i.isalpha():
@@ -280,25 +287,21 @@ def update_hidden_word():
         print(hidden_word)
     else:
         build_pictures += 1
+        print('build_pictures stage', build_pictures)
         update_hangman()
     guess_input()
+        
 
-def update_hangman():
+def update_hangman(): 
+    global attempts_left
     if guess != random_word:
+        attempts_left -= 1
+        print(f"you have {attempts_left} attempts left")
         print(HANGMAN[build_pictures])
         print(hidden_word)
     else:
         print("resetting picture")
-
-
-def game_play():
-    global game_play
-    if attempts_taken <= 6:
-        game_play = True
-        print("True")
-    else:
-        game_play = False
-        print("False")
+            
 
 
 def main():
@@ -307,7 +310,7 @@ def main():
     select_random_word()
     hide_random_word()
     guess_input()
-    game_play()
+    #game_play()
 
 
 main()
