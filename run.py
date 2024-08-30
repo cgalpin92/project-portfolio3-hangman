@@ -151,6 +151,8 @@ HANGMAN = [
     """
 ]
 
+attempts_taken = 0
+build_pictures = 0
 
 def start():
 
@@ -195,11 +197,13 @@ def display_rules():
     print("\nstarting game...\n")
 
 
+
 def start_game():
     global hangman_picures
     hangman_picures = 0
-    global attempts
-    attempts = 0
+    global attempts_taken
+    attempts_taken = 0
+    print('START GAME attempts_taken: ', attempts_taken)
     print(f"Hi {username}\n")
     display_rules()
 
@@ -220,16 +224,20 @@ def hide_random_word():
 
 def guess_input():
     global guess
+    print('GUESS INPUT attempts_taken: ', attempts_taken)
     guess = input("Enter Letter Below: \n")
     check_guess_input()
 
 
 def check_guess_input():
     global attempts_taken
+    print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
     for i in guess:
         if i.isalpha():
+            print('IF BLOCK attempts_taken: ', attempts_taken)
             print(f"You entered {guess} \n")
-            attempts_taken = attempts + 1
+            attempts_taken += 1
+            print('INCREMENT attempts_taken: ', attempts_taken)
             update_hidden_word()
         else:
             print("You must enter a letter\n")
@@ -239,6 +247,7 @@ def check_guess_input():
 def update_hidden_word():
     global new_hidden_word
     global build_pictures
+    global hangman_picures
     if guess in random_word:
         x = "".join(guess if random_word[i] == guess
                     else hidden_word[i]for i in range(len(random_word)))
@@ -246,12 +255,13 @@ def update_hidden_word():
         print(new_hidden_word)
         guess_input()
     else:
-        build_pictures = hangman_picures + 1
+        build_pictures += 1
         update_hangman()
         guess_input()
 
 
 def update_hangman():
+    
     if guess != random_word:
         print(HANGMAN[build_pictures])
     else:
