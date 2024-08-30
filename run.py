@@ -153,6 +153,7 @@ HANGMAN = [
 
 attempts_taken = 0
 build_pictures = 0
+used_letters = []
 
 def start():
 
@@ -231,6 +232,7 @@ def guess_input():
 
 def check_guess_input():
     global attempts_taken
+    global used_letters
     print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
     for i in guess:
         if i.isalpha():
@@ -238,6 +240,8 @@ def check_guess_input():
             print(f"You entered {guess} \n")
             attempts_taken += 1
             print('INCREMENT attempts_taken: ', attempts_taken)
+            used_letters += guess
+            print(used_letters)
             update_hidden_word()
         else:
             print("You must enter a letter\n")
@@ -261,7 +265,6 @@ def update_hidden_word():
 
 
 def update_hangman():
-    
     if guess != random_word:
         print(HANGMAN[build_pictures])
     else:
