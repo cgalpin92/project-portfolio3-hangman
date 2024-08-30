@@ -286,6 +286,7 @@ def update_hidden_word():
 def update_hangman():
     if guess != random_word:
         print(HANGMAN[build_pictures])
+        print(hidden_word)
     else:
         print("resetting picture")
 
