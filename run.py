@@ -219,12 +219,12 @@ def select_random_word():
     all_words = words.col_values(1)
     global random_word
     random_word = random.choice(all_words)
-    print(random_word)  # will remove once code complete
+    # print(random_word)  # will remove once code complete
 
 
 def hide_random_word():
     """
-    changes the letters within the random word to _
+    changes the letters within the random word to -
     """
     global hidden_word
     hidden_word = "-" * len(random_word) + "\n"
@@ -232,6 +232,9 @@ def hide_random_word():
 
 
 def guess_input():
+    """
+    creates the input for player to enter their guess
+    """
     global guess
     print('GUESS INPUT attempts_taken: ', attempts_taken)
     guess = input("Enter Letter Below: \n")
@@ -239,6 +242,15 @@ def guess_input():
 
 
 def check_guess_input():
+    """
+    validates that the guess is a letter
+    if the guess is a letter attempts will increase by one
+    the letter will be added to the used letters list
+    and the hidden word will be updated with the letter
+    if the guess is not a letter the user will be notified
+    and they will be asked to enter a guess again
+    attempts will not increase
+    """
     global attempts_taken
     global used_letters
     print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
