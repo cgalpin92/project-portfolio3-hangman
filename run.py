@@ -222,7 +222,7 @@ def select_random_word():
 def hide_random_word():
     global hidden_word
     hidden_word = "_" * len(random_word) + "\n"
-    print(hidden_word)
+    # print(hidden_word)
 
 
 def guess_input():
