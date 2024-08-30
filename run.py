@@ -219,12 +219,15 @@ def select_random_word():
     all_words = words.col_values(1)
     global random_word
     random_word = random.choice(all_words)
-    # print(random_word)  # will remove once code complete
+    print(random_word)  # will remove once code complete
 
 
 def hide_random_word():
+    """
+    changes the letters within the random word to _
+    """
     global hidden_word
-    hidden_word = "_" * len(random_word) + "\n"
+    hidden_word = "-" * len(random_word) + "\n"
     print(hidden_word)
 
 
