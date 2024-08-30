@@ -150,7 +150,7 @@ HANGMAN = [
     ---------------
     """
 ]
-
+# global variables
 attempts_taken = 0
 attempts_left = 11
 build_pictures = 0
@@ -204,6 +204,13 @@ def display_rules():
 
 
 def start_game():
+    """
+    Once the player has entered a valid username the game will start
+    HANGMAN Pictures and attempts taken are set to zero
+    terminal prints hello to player inputting the username 
+    the player entered
+    display_rules function is called
+    """
     global hangman_picures
     hangman_picures = 0
     global attempts_taken
@@ -235,7 +242,11 @@ def hide_random_word():
 
 def guess_input():
     """
-    creates the input for player to enter their guess
+    checks if the game play is true or false
+    if true will create the input for player 
+    to enter their guess
+    if false game will end and the appropriate
+    print statements will print for the player
     """
     global guess
     global end_game
@@ -270,6 +281,7 @@ def check_guess_input():
     if the guess is a letter attempts will increase by one
     the letter will be added to the used letters list
     and the hidden word will be updated with the letter
+    used letter list is printed to the terminal
     if the guess is not a letter the user will be notified
     and they will be asked to enter a guess again
     attempts will not increase
@@ -293,6 +305,16 @@ def check_guess_input():
 
 
 def update_hidden_word():
+    """
+    If the player guesses the correct letter the hidden word 
+    will be updated
+    If the player guesses an incorrect letter the hangman
+    gallows will start to build
+    Part of function code taken from existing hangman game and
+    Stack Overflow site:
+    https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py#L510
+    https://stackoverflow.com/questions/44307988/find-all-occurrences-of-a-character-in-a-string
+    """
     global hidden_word
     global build_pictures
     if guess in random_word:
@@ -309,19 +331,28 @@ def update_hidden_word():
     guess_input()
         
 
-def update_hangman(): 
+def update_hangman():
+    """
+    hangman pictures increase by one
+    attempts left decrease by one
+    terminal prints following print statements:
+    how many attempts the user has left
+    the hangman images
+    the current hidden word
+    """
     global attempts_left
     if guess != random_word:
         attempts_left -= 1
         print(f"you have {attempts_left} attempts left")
         print(HANGMAN[build_pictures])
         print(hidden_word)
-    else:
-        print("resetting picture")
             
 
 
 def main():
+    """
+    main function which runs the terminal game
+    """
     start()
     start_game()
     select_random_word()
