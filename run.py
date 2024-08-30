@@ -228,7 +228,7 @@ def select_random_word():
     all_words = words.col_values(1)
     global random_word
     random_word = random.choice(all_words)
-    # print(random_word)  # will remove once code complete
+    print(random_word)  # will remove once code complete
 
 
 def hide_random_word():
@@ -257,16 +257,19 @@ def guess_input():
         print("You have run out of attempts\n")
         print(f"The word was {random_word}\n")
         print("Game Over!!\n")
+        play_again()
     elif attempts_left == 0:
         game_play = False
         print("You have run out of attempts\n")
         print(f"the word was {random_word}\n")
         print("Game Over!!\n")
+        play_again()
     elif "-" not in hidden_word:
         game_play = False
         print("Contratulations!!\n")
         print(f"You correctly guessed {random_word}\n")
         print("Game Over!!\n")
+        play_again()
     while game_play is True:   
         print('GUESS INPUT attempts_taken: ', attempts_taken)
         guess = input("Enter Letter Below: \n")
@@ -347,7 +350,37 @@ def update_hangman():
         print(HANGMAN[build_pictures])
         print(hidden_word)
             
+def play_again():
+    print("Would you like to play again?\n")
+    print("Enter Y for Yes or N for No\n")
+    answer_input = input("Y or N \n")
+    if answer_input == "Y" or answer_input == "y":
+        print("restarting")
+        restart()
+    elif answer_input == "N" or answer_input == "n":
+        print("Ending Game\n")
+    else:
+        print("Please answer Y or N")
 
+
+def restart():
+    global attempts_taken
+    global attempts_left
+    global build_pictures
+    global used_letters
+    global random_word
+    global hidden_word
+    global game_play
+    attempts_taken = 0
+    attempts_left = 11
+    build_pictures = 0
+    used_letters = []
+    random_word = None
+    hidden_word = None
+    game_play = True
+    select_random_word()
+    hide_random_word()
+    guess_input()  
 
 def main():
     """
@@ -358,6 +391,7 @@ def main():
     select_random_word()
     hide_random_word()
     guess_input()
+    
 
 
 main()
