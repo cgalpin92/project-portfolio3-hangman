@@ -239,6 +239,14 @@ def guess_input():
     """
     global guess
     global end_game
+    global game_play
+    global attempts_taken
+    if attempts_taken == 20:
+        game_play = False
+    elif attempts_left == 0:
+        game_play = False
+    elif "-" not in hidden_word:
+        game_play = False
     while game_play is True:   
         print('GUESS INPUT attempts_taken: ', attempts_taken)
         guess = input("Enter Letter Below: \n")
@@ -310,7 +318,6 @@ def main():
     select_random_word()
     hide_random_word()
     guess_input()
-    #game_play()
 
 
 main()
