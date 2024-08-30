@@ -154,6 +154,8 @@ HANGMAN = [
 attempts_taken = 0
 build_pictures = 0
 used_letters = []
+random_word = None
+hidden_word = None
 
 def start():
 
@@ -249,20 +251,19 @@ def check_guess_input():
 
 
 def update_hidden_word():
-    global new_hidden_word
+    global hidden_word
     global build_pictures
-    global hangman_picures
     if guess in random_word:
-        x = "".join(guess if random_word[i] == guess
-                    else hidden_word[i]for i in range(len(random_word)))
-        new_hidden_word = x
-        print(new_hidden_word)
-        guess_input()
+        positions = [i for i, a in enumerate(random_word) if a == guess]
+        hidden_word_list = list(hidden_word)
+        for num in positions:
+            hidden_word_list[num] = guess
+        hidden_word = "".join(hidden_word_list)
+        print(hidden_word)
     else:
         build_pictures += 1
         update_hangman()
-        guess_input()
-
+    guess_input()
 
 def update_hangman():
     if guess != random_word:
