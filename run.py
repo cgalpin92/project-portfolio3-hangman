@@ -173,13 +173,13 @@ game_play = True
 def start():
 
     """
-    Runs when terminal is launched
-    Explains what Hangman is
-    Asks the user to enter a username to proceed
-    Username can be any number of letters or digits
-    But cannot be blank
-    If no username is entered will re-ask until username entered
-    Will then proceed to start the game
+    Function to start the game.
+    Runs when terminal is launched.
+    Explains what Hangman is.
+    Asks the user to enter a username to proceed.
+    Username can be any number of letters or digits but cannot be blank.
+    If no username is entered will re-ask until username entered.
+    Will then proceed to start the game.
     """
     print("Welcome to Hangman\n")
     print(HANGMAN[11])
@@ -207,7 +207,7 @@ def start():
 
 def display_rules():
     """
-    Displays the rules when player enters a valid username
+    Function to display the rules when player enters a valid username.
     Player is then asked if they would like to proceed and play
     the game. If they enter y the game starts, if they enter
     n the screen will return to home screen
@@ -236,24 +236,23 @@ def display_rules():
 
 def start_game():
     """
-    Once the player has entered a valid username the game will start
-    HANGMAN Pictures and attempts taken are set to zero
-    terminal prints hello to player inputting the username 
-    the player entered
-    display_rules function is called
+    Function to start the game once the player has entered y.
+    HANGMAN Pictures and attempts taken are set to zero.
+    Number of attempts taken is printed to terminal.
+    display_rules function is called.
     """
     global hangman_picures
     hangman_picures = 0
     global attempts_taken
     attempts_taken = 0
-    print('START GAME attempts_taken: ', attempts_taken)
+    print(f'You have taken: {attempts_taken} attempts')
     # print(f"Hi {username}\n")
     # display_rules()
 
 
 def select_random_word():
     """
-    selects random word from googlesheets
+    Function for the computer to select a random word from googlesheets.
     """
     words = SHEET.worksheet('words')
     all_words = words.col_values(1)
@@ -264,7 +263,7 @@ def select_random_word():
 
 def hide_random_word():
     """
-    changes the letters within the random word to -
+    Function to change the letters within the random word to '-'.
     """
     global hidden_word
     hidden_word = "-" * len(random_word) + "\n"
@@ -273,11 +272,10 @@ def hide_random_word():
 
 def guess_input():
     """
-    checks if the game play is true or false
-    if true will create the input for player 
-    to enter their guess
-    if false game will end and the appropriate
-    print statements will print for the player
+    Function to check if the game play is true or false
+    If true will create the input for player to enter their guess
+    If false game will end and the appropriate print statements 
+    will print for the player
     """
     global guess
     global end_game
@@ -287,22 +285,23 @@ def guess_input():
         game_play = False
         print("You have run out of attempts\n")
         print(f"The word was {random_word}\n")
-        print("Game Over!!\n")
+        print("Game Over!!!\n")
         play_again()
     elif attempts_left == 0:
         game_play = False
-        print("You have run out of attempts\n")
+        print("The Hangman picture is complete\n")
         print(f"the word was {random_word}\n")
-        print("Game Over!!\n")
+        print("Game Over!!!\n")
         play_again()
     elif "-" not in hidden_word:
         game_play = False
-        print("Contratulations!!\n")
+        print("Contratulations!!!\n")
         print(f"You correctly guessed {random_word}\n")
-        print("Game Over!!\n")
+        print("Game Over!!!\n")
         play_again()
     while game_play is True:   
-        print('GUESS INPUT attempts_taken: ', attempts_taken)
+        #print('GUESS INPUT attempts_taken: ', attempts_taken)
+        print(f'You have taken: {attempts_taken} attempts')
         guess = input("Enter Letter Below: \n")
         check_guess_input()
 
@@ -311,25 +310,28 @@ def guess_input():
 
 def check_guess_input():
     """
-    validates that the guess is a letter
-    if the guess is a letter attempts will increase by one
-    the letter will be added to the used letters list
-    and the hidden word will be updated with the letter
-    used letter list is printed to the terminal
-    if the guess is not a letter the user will be notified
-    and they will be asked to enter a guess again
-    attempts will not increase
+    Function to validates that the guess is a letter.
+    If the guess is a letter attempts will increase by one.
+    The letter will be added to the used letters list
+    and the hidden word will be updated with the letter.
+    The used letter list is printed to the terminal.
+    If the guess is not a letter the user will be notified
+    and they will be asked to enter a guess again.
+    Attempts will not increase
     """
     global attempts_taken
     global used_letters
     global game_play
-    print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
+    #print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
+    print(f'You have taken: {attempts_taken} attempts')
     for i in guess:
         if i.isalpha():
-            print('IF BLOCK attempts_taken: ', attempts_taken)
+            #print('IF BLOCK attempts_taken: ', attempts_taken)
+            #print(f'You have taken: {attempts_taken} attempts')
             print(f"You entered {guess} \n")
             attempts_taken += 1
-            print('INCREMENT attempts_taken: ', attempts_taken)
+            #print('INCREMENT attempts_taken: ', attempts_taken)
+            print(f'You have taken: {attempts_taken} attempts')
             used_letters += guess
             print(used_letters)
             update_hidden_word()
@@ -341,12 +343,9 @@ def check_guess_input():
 
 def update_hidden_word():
     """
-    If the player guesses the correct letter the hidden word 
-    will be updated
-    If the player guesses an incorrect letter the hangman
-    gallows will start to build
-    Part of function code taken from existing hangman game and
-    Stack Overflow site:
+    Function to update the hidden word if the player guesses the correct letter.
+    If the player guesses an incorrect letter the hangman pictures will start to build.
+    Section within if statement taken from existing hangman game and Stack Overflow sites:
     https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py#L510
     https://stackoverflow.com/questions/44307988/find-all-occurrences-of-a-character-in-a-string
     """
@@ -354,6 +353,7 @@ def update_hidden_word():
     global build_pictures
     global attempts_left
     if guess in random_word:
+        # taken from existing hangman game and stack overflow sites listed above
         positions = [i for i, a in enumerate(random_word) if a == guess]
         hidden_word_list = list(hidden_word)
         for num in positions:
@@ -362,7 +362,7 @@ def update_hidden_word():
         print(hidden_word)
     else:
         build_pictures += 1
-        print('build_pictures stage', build_pictures)
+        print(f'Hangman Picture: {build_pictures}')
         if guess != random_word:
             attempts_left -= 1
             print(f"you have {attempts_left} attempts left")
@@ -372,19 +372,33 @@ def update_hidden_word():
     
             
 def play_again():
+    """
+    Function to ask the player if they would like to play again after the game
+    has ended.
+    If they select Y the game restarts and the restart function is called.
+    If they select N the game ends.
+    If they do not answer Y, y, N or n they will be asked to enter a valid
+    answer.
+    """
     print("Would you like to play again?\n")
     print("Enter Y for Yes or N for No\n")
     answer_input = input("Y or N \n")
     if answer_input.upper() == "Y": # or answer_input == "y":
-        print("restarting")
+        print("restarting...")
         restart()
     elif answer_input.upper() == "N": # answer_input == "n":
-        print("Ending Game\n")
+        print(f"Thank you {username} for playing\n")
+        print("Ending Game...\n")
     else:
-        print("Please answer Y or N")
+        print("You did not enter a valid answer, Please answer Y or N\n")
 
 
 def restart():
+    """
+    Function to restart game
+    Global variables are reset.
+    random_word(), hide_random_word() and guess_input() functions are recalled.
+    """
     global attempts_taken
     global attempts_left
     global build_pictures
