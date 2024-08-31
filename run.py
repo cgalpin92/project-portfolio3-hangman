@@ -226,11 +226,13 @@ def display_rules():
     print("20 attempts or before the Hangman picture is complete\n")
     play = input("Ready to Play? Enter y or n: \n")
     if play.lower() == "y":
+        print("\nstarting game...\n")
         start_game()
-    else:
+    elif play.lower() == "n":
         print("Returning to home screen...")
-        start()
-    print("\nstarting game...\n")
+        start_game()    
+    else:
+        print("You did not enter a valid answer. Please enter Y or N:")
 
 
 
@@ -382,6 +384,7 @@ def play_again():
     """
     print("Would you like to play again?\n")
     print("Enter Y for Yes or N for No\n")
+
     answer_input = input("Y or N \n")
     if answer_input.upper() == "Y": # or answer_input == "y":
         print("restarting...")
