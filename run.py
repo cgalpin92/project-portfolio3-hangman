@@ -1,5 +1,4 @@
 
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
 import random
@@ -161,6 +160,7 @@ HANGMAN = [
 ]
 
 TOTAL_ATTEMPTS_ALLOWED = 20
+
 # global variables
 attempts_taken = 0
 attempts_left = 11
@@ -199,7 +199,6 @@ def start():
         else:
             print("You have not entered a username\n")
             print("You must enter a username to proceed\n")
-    # print("game loading...\n")
     print("\nRules Loading...\n")
     display_rules()
     
@@ -247,9 +246,6 @@ def start_game():
     hangman_picures = 0
     global attempts_taken
     attempts_taken = 0
-    # print(f'You have taken: {attempts_taken} attempts')
-    # print(f"Hi {username}\n")
-    # display_rules()
 
 
 def select_random_word():
@@ -269,7 +265,7 @@ def hide_random_word():
     """
     global hidden_word
     hidden_word = "-" * len(random_word) + "\n"
-    print(hidden_word)
+    print(f"Your word is {hidden_word}")
 
 
 def guess_input():
@@ -302,7 +298,6 @@ def guess_input():
         print("Game Over!!!\n")
         play_again()
     while game_play is True:   
-        #print('GUESS INPUT attempts_taken: ', attempts_taken)
         print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
         guess = input("Enter Letter Below: \n")
         guess = guess.lower()
@@ -325,19 +320,11 @@ def check_guess_input():
     global attempts_taken
     global used_letters
     global game_play
-    #print('CHECK GUESS INPUT attempts_taken: ', attempts_taken)
-    # print(f'You have taken: {attempts_taken} attempts')
     for i in guess:
         if i.isalpha():
-            #print('IF BLOCK attempts_taken: ', attempts_taken)
-            #print(f'You have taken: {attempts_taken} attempts')
             print(f"\nYou entered {guess} \n")
             attempts_taken += 1
             used_letters += guess
-            #print('INCREMENT attempts_taken: ', attempts_taken)
-            # print(f'You have taken: {attempts_taken} attempts')
-            # used_letters += guess
-            # print(used_letters)
             update_hidden_word()
 
             
@@ -360,28 +347,35 @@ def update_hidden_word():
     global attempts_left
     global attempts_taken
     global used_letters
-    if guess in random_word:
-        # taken from existing hangman game and stack overflow sites listed above
-        positions = [i for i, a in enumerate(random_word) if a == guess]
+    if guess == random_word:
+        hidden_word = random_word
+    elif guess in random_word:
+        """
+        taken from existing hangman game and stack overflow sites listed above
+        """
+        
+        # positions = [i for i, a in enumerate(random_word) if a == guess]
         hidden_word_list = list(hidden_word)
-        for num in positions:
-            hidden_word_list[num] = guess
+        # for num in positions:
+        for index, letter in enumerate(random_word):
+            if letter == guess:
+                hidden_word_list[index] = letter
+            
+            # hidden_word_list[num] = guess
         hidden_word = "".join(hidden_word_list)
         print(f"WELL DONE!! {guess} was correct\n")
         print(hidden_word)
-        
-        # used_letters += guess
         print(f"letters guessed so far: {used_letters}\n")
-        # print(f'You have taken: {attempts_taken} attempts')
     else:
-        # Guidance for building below code taken from above hangman game site
+        """
+        Guidance for building below code taken from above hangman game site
+        """
         print(f"Sorry, {guess} was incorrect")
         build_pictures += 1
         print(f'Hangman Picture: {build_pictures} out of 11')
         if guess != random_word:
             attempts_left -= 1
             print(HANGMAN[build_pictures])
-            # print(f"you have {attempts_left} attempts left")
             print(f"letters guessed so far: {used_letters}\n")
             print(hidden_word)
     guess_input()    
@@ -400,10 +394,10 @@ def play_again():
     print("Enter Y for Yes or N for No\n")
 
     answer_input = input("Y or N \n")
-    if answer_input.upper() == "Y": # or answer_input == "y":
+    if answer_input.upper() == "Y":
         print("restarting...")
         restart()
-    elif answer_input.upper() == "N": # answer_input == "n":
+    elif answer_input.upper() == "N":
         print(f"Thank you {username} for playing\n")
         print("Ending Game...\n")
     else:
@@ -439,8 +433,6 @@ def main():
     main function which runs the terminal game
     """
     start()
-    #display_rules()
-    #start_game()
     select_random_word()
     hide_random_word()
     guess_input()
