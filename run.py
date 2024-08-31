@@ -305,6 +305,7 @@ def guess_input():
         #print('GUESS INPUT attempts_taken: ', attempts_taken)
         print(f'You have taken: {attempts_taken} attempts')
         guess = input("Enter Letter Below: \n")
+        guess = guess.lower()
         check_guess_input()
 
 
