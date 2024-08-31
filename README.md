@@ -7,11 +7,19 @@ The goal of the game is for the user to guess the word before the Hangman's gall
 
 ## How to play
 
-The Computer will select a Random Word and display a list of dashes to represent that word
-The player's aim is to guess what the Random Word is by entering one letter, between 'a' and 'z', at a time 
-If the letter is correct it will appear in the correct space within the word
-If the letter is incorrect a section of the Hangman's Gallows will be added
-The player will have 11 attempts to guess the correct word before the Hangman's Gallows are complete at which point the player looses the game
+1. The Computer will select a word at random
+
+2. A list of dashes will apear to represent that word
+
+3. The player's aim is to guess the correct word either by entering a letter or by entering an entire word, if they think they know it.
+
+4. They can enter any letter between 'a' and 'z' in the space provided to them.
+
+5. If the player guesses a correct letter or word, the computer will replace a dash within the correct position within the word.
+
+6. If the player guesses incorrectly, the Hangman picture will start to build. After 11 incorrect guesses the Hangman picture will be complete.
+
+7. To win the game, the player must correctly guess the word either within 20 attempts or before the Hangman picture is complete.
 
 ## Features
 
