@@ -201,12 +201,16 @@ def start():
             print("You must enter a username to proceed\n")
     # print("game loading...\n")
     print("\nRules Loading...\n")
+    display_rules()
     
 
 
 def display_rules():
     """
-    Displays the rules when called in the function below
+    Displays the rules when player enters a valid username
+    Player is then asked if they would like to proceed and play
+    the game. If they enter y the game starts, if they enter
+    n the screen will return to home screen
     """
     print(f"Hi {username}\n")
     print("The Computer will select a word at random\n")
@@ -403,7 +407,7 @@ def main():
     main function which runs the terminal game
     """
     start()
-    display_rules()
+    #display_rules()
     #start_game()
     select_random_word()
     hide_random_word()
