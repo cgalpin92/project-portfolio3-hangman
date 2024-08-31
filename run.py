@@ -4,6 +4,15 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 
+"""
+Guidance on following Constants taken from Love Sandwiches Project
+SCOPE
+CREDS
+SCOPED_CREDS
+GSPREAD_CLIENT
+SHEET
+"""
+# constant variables
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -150,6 +159,8 @@ HANGMAN = [
     ---------------
     """
 ]
+
+TOTAL_ATTEMPTS_ALLOWED = 20
 # global variables
 attempts_taken = 0
 attempts_left = 11
@@ -165,13 +176,19 @@ def start():
     Runs when terminal is launched
     Explains what Hangman is
     Asks the user to enter a username to proceed
+    Username can be any number of letters or digits
+    But cannot be blank
     If no username is entered will re-ask until username entered
     Will then proceed to start the game
     """
     print("Welcome to Hangman\n")
     print(HANGMAN[11])
-    print("what hangman game is")
-    print("Please enter a username below to proceed\n")
+    print("Hangman is a guessing game for 2 or more players\n")
+    print("In this game you will be playing against the computer\n")
+    print("One player thinks of a word\n")
+    print("And the other player tries to guess the word within a certain")
+    print("number of guesses or before the Hangman image above is complete\n")
+    print("To play this Hangman game please enter a username to proceed\n")
     while True:
         global username
         username = input("Enter username here:  \n")
@@ -181,24 +198,25 @@ def start():
             break
         else:
             print("You have not entered a username\n")
-            print("please enter a username to proceed\n")
+            print("You must enter a username to proceed\n")
     print("game loading...\n")
+    
 
 
 def display_rules():
     """
-    Displays the rules when called
+    Displays the rules when called in the function below
     """
     print("The Computer will select a word at random\n")
-    print("A list of dashes will appear to represent the word\n")
-    print("Your aim is to guess the word one letter at a time\n")
-    print("Enter any letter between 'a' and 'z'\n")
-    print("If you are right the letter will replace a dash\n")
+    print("A list of dashes will appear to represent that word\n")
+    print("Your aim is to guess the word either by entering a letter,")
+    print("or by entering an entire word (if you think you know it)\n")
+    print("Enter any letter between 'a' and 'z' in the space provided\n")
+    print("If you are right the letter will replace a dash within it's")
+    print("correct position within the word")
     print("If you are wrong a section of the Hangman's Gallows is added\n")
-    print("You will have 11 attempts to guess the correct word\n")
-    print("Guess before those 11 attepts are up and you win\n")
-    print("If you don't guess before the Hangman's Gallows are complete...\n")
-    print("and you will loose\n")
+    print("To win the game you have to guess the correct word either within")
+    print("20 attempts or 11 incorrect guesses")
     print("\nstarting game...\n")
 
 
@@ -252,7 +270,7 @@ def guess_input():
     global end_game
     global game_play
     global attempts_taken
-    if attempts_taken == 20:
+    if attempts_taken == TOTAL_ATTEMPTS_ALLOWED:
         game_play = False
         print("You have run out of attempts\n")
         print(f"The word was {random_word}\n")
@@ -307,6 +325,7 @@ def check_guess_input():
             guess_input()
 
 
+
 def update_hidden_word():
     """
     If the player guesses the correct letter the hidden word 
@@ -320,6 +339,7 @@ def update_hidden_word():
     """
     global hidden_word
     global build_pictures
+    global attempts_left
     if guess in random_word:
         positions = [i for i, a in enumerate(random_word) if a == guess]
         hidden_word_list = list(hidden_word)
@@ -330,34 +350,22 @@ def update_hidden_word():
     else:
         build_pictures += 1
         print('build_pictures stage', build_pictures)
-        update_hangman()
-    guess_input()
-        
-
-def update_hangman():
-    """
-    hangman pictures increase by one
-    attempts left decrease by one
-    terminal prints following print statements:
-    how many attempts the user has left
-    the hangman images
-    the current hidden word
-    """
-    global attempts_left
-    if guess != random_word:
-        attempts_left -= 1
-        print(f"you have {attempts_left} attempts left")
-        print(HANGMAN[build_pictures])
-        print(hidden_word)
+        if guess != random_word:
+            attempts_left -= 1
+            print(f"you have {attempts_left} attempts left")
+            print(HANGMAN[build_pictures])
+            print(hidden_word)
+    guess_input()    
+    
             
 def play_again():
     print("Would you like to play again?\n")
     print("Enter Y for Yes or N for No\n")
     answer_input = input("Y or N \n")
-    if answer_input == "Y" or answer_input == "y":
+    if answer_input.upper() == "Y": # or answer_input == "y":
         print("restarting")
         restart()
-    elif answer_input == "N" or answer_input == "n":
+    elif answer_input.upper() == "N": # answer_input == "n":
         print("Ending Game\n")
     else:
         print("Please answer Y or N")
@@ -392,6 +400,5 @@ def main():
     hide_random_word()
     guess_input()
     
-
-
-main()
+if __name__ == "__main__":
+    main()
