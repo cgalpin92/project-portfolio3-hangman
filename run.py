@@ -199,7 +199,8 @@ def start():
         else:
             print("You have not entered a username\n")
             print("You must enter a username to proceed\n")
-    print("game loading...\n")
+    # print("game loading...\n")
+    print("\nRules Loading...\n")
     
 
 
@@ -207,16 +208,23 @@ def display_rules():
     """
     Displays the rules when called in the function below
     """
+    print(f"Hi {username}\n")
     print("The Computer will select a word at random\n")
     print("A list of dashes will appear to represent that word\n")
     print("Your aim is to guess the word either by entering a letter,")
     print("or by entering an entire word (if you think you know it)\n")
     print("Enter any letter between 'a' and 'z' in the space provided\n")
-    print("If you are right the letter will replace a dash within it's")
-    print("correct position within the word")
+    print("If you guess a correct letter, the computer will")
+    print("replace a dash within it's correct position within the word\n")
     print("If you are wrong a section of the Hangman's Gallows is added\n")
     print("To win the game you have to guess the correct word either within")
-    print("20 attempts or 11 incorrect guesses")
+    print("20 attempts or 11 incorrect guesses\n")
+    play = input("Ready to Play? Enter y or n: \n")
+    if play.lower() == "y":
+        start_game()
+    else:
+        print("Returning to home screen...")
+        start()
     print("\nstarting game...\n")
 
 
@@ -234,8 +242,8 @@ def start_game():
     global attempts_taken
     attempts_taken = 0
     print('START GAME attempts_taken: ', attempts_taken)
-    print(f"Hi {username}\n")
-    display_rules()
+    # print(f"Hi {username}\n")
+    # display_rules()
 
 
 def select_random_word():
@@ -395,7 +403,8 @@ def main():
     main function which runs the terminal game
     """
     start()
-    start_game()
+    display_rules()
+    #start_game()
     select_random_word()
     hide_random_word()
     guess_input()
