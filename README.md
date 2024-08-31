@@ -68,6 +68,10 @@ The player will have 11 attempts to guess the correct word before the Hangman's 
                     print(You must enter a letter)
         - When running this within the terminal the validation test was successfull, when entering a number the else statement runs, when entering a letter the if statment runs.
     - Created infinate loop.
+    - display_rules() function only running once:
+        - After changing the order in which the display_rules() and start_game() functions run found the display_rules() function only runs the once. If returning to home screen, entering a username again and proceeding the display_rules() function is missed and the game proceeds to start.
+        - Recognised this was due to the display_rules() function being called in the main() function, and once returning to start() function it was not being called again.
+        - Fixed the bug by moving the call for the display_rules() function to the end of start() function and removed from the main() function so that each time the player returns to the home screen and proceeds the display_rules function() is called.
 
 
     
