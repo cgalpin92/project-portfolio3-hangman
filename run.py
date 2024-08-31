@@ -303,7 +303,7 @@ def guess_input():
         play_again()
     while game_play is True:   
         #print('GUESS INPUT attempts_taken: ', attempts_taken)
-        print(f'Attempts: {attempts_taken}\n')
+        print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
         guess = input("Enter Letter Below: \n")
         guess = guess.lower()
         check_guess_input()
@@ -367,6 +367,7 @@ def update_hidden_word():
         for num in positions:
             hidden_word_list[num] = guess
         hidden_word = "".join(hidden_word_list)
+        print(f"WELL DONE!! {guess} was correct\n")
         print(hidden_word)
         
         # used_letters += guess
@@ -374,12 +375,13 @@ def update_hidden_word():
         # print(f'You have taken: {attempts_taken} attempts')
     else:
         # Guidance for building below code taken from above hangman game site
+        print(f"Sorry, {guess} was incorrect")
         build_pictures += 1
-        print(f'Hangman Picture: {build_pictures}')
+        print(f'Hangman Picture: {build_pictures} out of 11')
         if guess != random_word:
             attempts_left -= 1
             print(HANGMAN[build_pictures])
-            print(f"you have {attempts_left} attempts left")
+            # print(f"you have {attempts_left} attempts left")
             print(f"letters guessed so far: {used_letters}\n")
             print(hidden_word)
     guess_input()    
