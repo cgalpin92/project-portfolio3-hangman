@@ -364,6 +364,7 @@ def update_hidden_word():
         hidden_word = "".join(hidden_word_list)
         print(hidden_word)
     else:
+        # Guidance for building below code taken from above hangman game site
         build_pictures += 1
         print(f'Hangman Picture: {build_pictures}')
         if guess != random_word:

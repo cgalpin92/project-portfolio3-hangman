@@ -9,6 +9,11 @@ The goal of the game is for the player to guess the word.
 
 Here is a live version of my project:
 
+## User Experience
+
+- As a user I want to understand the rules of the game.
+- As a user I want beat the computer and guess the word before my guesses run out.
+
 ## How to play
 
 1. The Computer will select a word at random
