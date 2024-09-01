@@ -195,7 +195,9 @@ The goal of the game is for the player to guess the word.
         - Fixed this error through using list slicing. Code changed to all_words = word.col_values(1)[1:] which means select all values within column one starting from the second element (index 1)
     
 - __Unfixed Bugs__
- - There are no unfixed bugs within this game.
+ - Cannot get code to run to only select random word if letter not in used worksheet.
+    - As a workaround have created a empty varible to hold the guessed words.
+    - The random word will not be selected if it is in this variable.
 
 ## Deployment
 
