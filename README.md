@@ -7,7 +7,7 @@ Players will play against the computer which will generate a random word and dis
 The player will then try to work out what the word is by guessing individual letters or by guessing a whole word. 
 The goal of the game is for the player to guess the word.
 
-Here is a live version of my project:
+![image of live version of project](/assets/media/responsive-mockup.png)
 
 ## User Experience
 
@@ -39,19 +39,25 @@ Here is a live version of my project:
     - A full image of the Hangman picture is displayed.
     - There is brief description about what Hangman is.
     - The player is asked to enter a username.
+
     ![image of Landing page displaying Welcome Message and Hangman Image](/assets/media/landing-page-1.png)
     ![image of username ask on landing page](/assets/media/landing-page-2.png)
+
 - __Rules__
     - Statement prints to tell the player that the Rules are loading.
     - The rules are displayed.
     - The player is then asked if they are ready to play the game.
+
     ![The Rules of the Game](/assets/media/display-rules.png)
+
 - __Play Game__
     - Statement prints to tell the player that the game is starting.
     - A list of dashes is presented to the player with a statement telling them that this is their hidden word.
     - If this is the first time the game is played, a statement is printed to say they have taken 0 attempts.
     - An input is presented for the player to enter a letter or word.
+
     ![Image of the start of the game](/assets/media/play-game-1.png)
+
     - A statement is printed to confirm the player’s input.
         - If input is word:
             - If correct:
@@ -65,30 +71,30 @@ Here is a live version of my project:
                 - The correct letter will appear within the hidden word.
                 - The letter will appear within the used letters field.
                 - The player is asked to enter another letter or word.
+
                 ![image of correct letter being entered, letter has appeared within hidden word and within letters guessed. Image shows attempts remaining and an input for another letter to be entered](/assets/media/correct-answer-1.png)
+
             - If incorrect:
                 - The Hangman picture starts to build.
                 - The letter will appear within the used letters field.
                 - The player is asked to enter another letter.
+
                 ![Image of incorrect answer being entered. Hangman picture has started to build. Image shows attempts remaining and an input for another letter to be entered](/assets/media/incorrect-answer-1.png)
-                ![image of hangman 1](/assets/media/hangman-1.png)
-                ![image of hangman 1](/assets/media/hangman-2.png)
-                ![image of hangman 1](/assets/media/hangman-3.png)
-                ![image of hangman 1](/assets/media/hangman-4.png)
-                ![image of hangman 1](/assets/media/hangman-5.png)
-                ![image of hangman 1](/assets/media/hangman-6.png)
-                ![image of hangman 1](/assets/media/hangman-7.png)
-                ![image of hangman 1](/assets/media/hangman-8.png)
-                ![image of hangman 1](/assets/media/hangman-9.png)
-                ![image of hangman 1](/assets/media/hangman-10.png)
+
+                ![Image of hangman picture 5 after some further incorrect guesses](/assets/media/incorrect-answer-2.png)
                 
     - Game play continues until either the correct word is guessed, or the Hangman image is complete.
-    ![image of hangman 1](/assets/media/hangman-11.png)
+
+    ![image of final hangman picture](/assets/media/hangman-11.png)
+
     - At which point player is asked if they want to play again. 
         - If they do game will reload.
         - If they choose to end the game statement will print to show game ending.
+
         ![image of end of game restarting](/assets/media/restarting.png)
+
         ![image of game ending](/assets/media/game-ending.png)
+        
 ### Future Features
 - I would like to add a scoreboard to record who wins each game - player or computer
 - I would like to add levels to the game so that the user can increase difficulty - longer letters to guess.
