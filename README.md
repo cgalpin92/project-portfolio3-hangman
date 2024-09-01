@@ -39,30 +39,56 @@ Here is a live version of my project:
     - A full image of the Hangman picture is displayed.
     - There is brief description about what Hangman is.
     - The player is asked to enter a username.
+    ![image of Landing page displaying Welcome Message and Hangman Image](/assets/media/landing-page-1.png)
+    ![image of username ask on landing page](/assets/media/landing-page-2.png)
 - __Rules__
     - Statement prints to tell the player that the Rules are loading.
     - The rules are displayed.
     - The player is then asked if they are ready to play the game.
+    ![The Rules of the Game](/assets/media/display-rules.png)
 - __Play Game__
     - Statement prints to tell the player that the game is starting.
     - A list of dashes is presented to the player with a statement telling them that this is their hidden word.
     - If this is the first time the game is played, a statement is printed to say they have taken 0 attempts.
     - An input is presented for the player to enter a letter or word.
+    ![Image of the start of the game](/assets/media/play-game-1.png)
     - A statement is printed to confirm the player’s input.
-        - If input is word and its correct the full word shows, the player is congratulated and asked if they would like to play again.
-        - If correct:
-            - The correct letter will appear within the hidden word.
-            - The letter will appear within the used letters field.
-            - The player is asked to enter another letter.
-        - If incorrect:
-            - The Hangman picture starts to build.
-            - The letter will appear within the used letters field.
-            - The player is asked to enter another letter.
+        - If input is word:
+            - If correct:
+                - The full word shows, the player is congratulated and asked if they would like to play again.
+                - If incorrect:
+                - The Hangman picture starts to build.
+                - The word appears in the used words list.
+                - The player is asked to enter another letter or word.
+        - If input is letter:
+            - If correct:
+                - The correct letter will appear within the hidden word.
+                - The letter will appear within the used letters field.
+                - The player is asked to enter another letter or word.
+                ![image of correct letter being entered, letter has appeared within hidden word and within letters guessed. Image shows attempts remaining and an input for another letter to be entered](/assets/media/correct-answer-1.png)
+            - If incorrect:
+                - The Hangman picture starts to build.
+                - The letter will appear within the used letters field.
+                - The player is asked to enter another letter.
+                ![Image of incorrect answer being entered. Hangman picture has started to build. Image shows attempts remaining and an input for another letter to be entered](/assets/media/incorrect-answer-1.png)
+                ![image of hangman 1](/assets/media/hangman-1.png)
+                ![image of hangman 1](/assets/media/hangman-2.png)
+                ![image of hangman 1](/assets/media/hangman-3.png)
+                ![image of hangman 1](/assets/media/hangman-4.png)
+                ![image of hangman 1](/assets/media/hangman-5.png)
+                ![image of hangman 1](/assets/media/hangman-6.png)
+                ![image of hangman 1](/assets/media/hangman-7.png)
+                ![image of hangman 1](/assets/media/hangman-8.png)
+                ![image of hangman 1](/assets/media/hangman-9.png)
+                ![image of hangman 1](/assets/media/hangman-10.png)
+                
     - Game play continues until either the correct word is guessed, or the Hangman image is complete.
+    ![image of hangman 1](/assets/media/hangman-11.png)
     - At which point player is asked if they want to play again. 
         - If they do game will reload.
         - If they choose to end the game statement will print to show game ending.
-
+        ![image of end of game restarting](/assets/media/restarting.png)
+        ![image of game ending](/assets/media/game-ending.png)
 ### Future Features
 - I would like to add a scoreboard to record who wins each game - player or computer
 - I would like to add levels to the game so that the user can increase difficulty - longer letters to guess.
@@ -83,16 +109,16 @@ Here is a live version of my project:
 
 -__PEP8 Testing__
 
-    - After passing the final code through the PEP8 linter I can confirm there are no errors.
+- After passing the final code through the PEP8 linter I can confirm there are no errors.
 
 -__Manual Testing__
 
-    - When running the game, I ran the following tests to see if they would cause any errors within the game.
-        - I entered an extremely long username - this did not break the game, each time the username field was printed, the username I had entered printed. Whilst not ideal to have such a long username, this does not affect the running of the code.
-        - I have entered a capital letter within the inputs that request either a Y or N or a letter (guess input). Each time the code will convert these inputs to a lower case so that the code does not break.
-        - I have entered numbers where a letter or word is specified, this does not break the game, the player is asked to re-enter a valid letter as the code specifies.
+- When running the game, I ran the following tests to see if they would cause any errors within the game.
+    - I entered an extremely long username - this did not break the game, each time the username field was printed, the username I had entered printed. Whilst not ideal to have such a long username, this does not affect the running of the code.
+    - I have entered a capital letter within the inputs that request either a Y or N or a letter (guess input). Each time the code will convert these inputs to a lower case so that the code does not break.
+    - I have entered numbers where a letter or word is specified, this does not break the game, the player is asked to re-enter a valid letter as the code specifies.
     
-    - I have successfully tested the game in both my local terminal within GitHub and the Code Institute Heroku terminal.
+- I have successfully tested the game in both my local terminal within GitHub and the Code Institute Heroku terminal.
 
 ### Bugs
 
