@@ -49,6 +49,7 @@ Here is a live version of my project:
     - If this is the first time the game is played, a statement is printed to say they have taken 0 attempts.
     - An input is presented for the player to enter a letter or word.
     - A statement is printed to confirm the player’s input.
+        - If input is word and its correct the full word shows, the player is congratulated and asked if they would like to play again.
         - If correct:
             - The correct letter will appear within the hidden word.
             - The letter will appear within the used letters field.
