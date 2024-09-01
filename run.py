@@ -258,7 +258,6 @@ def select_random_word():
     all_words = words.col_values(1)
     global random_word
     random_word = random.choice(all_words)
-    print(random_word)  # will remove once code complete
 
 
 def hide_random_word():
