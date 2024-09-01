@@ -322,12 +322,19 @@ def check_guess_input():
     global game_play
     for i in guess:
         if i.isalpha():
-            print(f"\nYou entered {guess} \n")
-            attempts_taken += 1
-            used_letters += guess
-            update_hidden_word()
-
-            
+            if len(guess) < 2:
+                print(f"\nYou entered {guess} \n")
+                attempts_taken += 1
+                used_letters += guess
+                update_hidden_word()
+            elif len(guess) == len(random_word):
+                print(f"\nYou entered {guess} \n")
+                attempts_taken += 1
+                used_letters += guess
+                update_hidden_word()
+            else:
+                print("Please enter either a single letter or the full word")
+                guess_input()            
         else:
             print("You must enter a letter\n")
             guess_input()
@@ -338,9 +345,8 @@ def update_hidden_word():
     """
     Function to update the hidden word if the player guesses the correct letter.
     If the player guesses an incorrect letter the hangman pictures will start to build.
-    Section within if statement taken from existing hangman game and Stack Overflow sites:
-    https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py#L510
-    https://stackoverflow.com/questions/44307988/find-all-occurrences-of-a-character-in-a-string
+    Section within if statement taken from Stack Overflow site - 
+    https://stackoverflow.com/questions/71621410/how-to-replace-more-than-one-occurrence-of-a-letter-in-list
     """
     global hidden_word
     global build_pictures
@@ -351,17 +357,12 @@ def update_hidden_word():
         hidden_word = random_word
     elif guess in random_word:
         """
-        taken from existing hangman game and stack overflow sites listed above
+        taken from stack overflow
         """
-        
-        # positions = [i for i, a in enumerate(random_word) if a == guess]
         hidden_word_list = list(hidden_word)
-        # for num in positions:
         for index, letter in enumerate(random_word):
             if letter == guess:
                 hidden_word_list[index] = letter
-            
-            # hidden_word_list[num] = guess
         hidden_word = "".join(hidden_word_list)
         print(f"WELL DONE!! {guess} was correct\n")
         print(hidden_word)

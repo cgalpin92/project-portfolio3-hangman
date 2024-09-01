@@ -134,6 +134,11 @@ Here is a live version of my project:
         - To run this fix, I needed to track the position of the letters of the hidden word and update that position with the letter if it matched the players guess.
         - Throughout each iteration the hidden word would be converted to a list and then converted back to a string to print to the terminal.
 
+    - Fixed error of hidden word not updating to entire correct word if correct word is guessed.
+        - Whilst above error had been fixed, when testing what would happen when entering a whole word, found that the hidden word did not update, however the print statements were correct, stating the player was correct and the used words list was also updating with all the letters entered.
+        - Attempted to fix this by adding an extra elif argument to the if statement to check the player is entering a letter. However this through errors up within the terminal and the game crashed.
+        - After some searching for solutions online, fixed the error by changing the if statement within check_correct_answer() function.
+            - Before the code runs to check if the letter is correct and updating the hidden word accourdingly, the code checks if the entery is the same as and equal to the random word, if it is it will print the entire word and the game will end. If it doesnt then it will proceed to check the letter within the elif statement and so on.
     - fixed validation error for checking if user wants to play game:
     
 - __Unfixed Bugs__
@@ -189,12 +194,11 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 - Guidance on tracking attempts taken from Stack Overflow - https://stackoverflow.com/questions/23842115/how-to-tell-user-how-many-attempts-left-in-python
 - Guidance for resolving PEP8 error "E128: Continuation line under indented for visual indent" taken from Stack Overflow - https://stackoverflow.com/questions/15435811/what-is-pep8s-e128-continuation-line-under-indented-for-visual-indent
 - Understanding and Code for updating the hidden word taken from Stack Overflow - https://stackoverflow.com/questions/67609834/how-to-replace-the-specified-dash-with-the-letter
-    - This was later removed as found a better way to update the hidden word with the correct letter/word. This was so I could fix the bug where the hidden word was continuously updated with each correct letter/word. This new code allows me to first store each individual letter in a positions variable which allows me to iterate through the letters. The hidden word is then converted into a list so that it can be modified with each new correct letter. The list is then turned back into a string which is then printed to the terminal. Found this in existing hangman game, and Stack Overflow pages which further helped my understanding:
-    - Existing hangman game - https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py#L510
-    - Stack Overflow Sites: 
-    https://stackoverflow.com/questions/44307988/find-all-occurrences-of-a-character-in-a-string
-    https://stackoverflow.com/questions/42565525/python-function-returning-different-list 
-    - The existing hangman game also gave me the idea for how to write the code to iterate through the hangman pictures. As a string cannot be modified, I would need to store an integer within another variable, the incorrect guess would update this integer which will specify the next hangman picture in the sequence to be called.
+    - This was later removed as found a better methods to update the hidden word with the correct letter. This was so I could fix numerous bugs with the hidden word not updating correctly. The guidance and code used in final deployment found from the following:
+        - Existing hangman game: https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py#L510
+        - Stack Overflow pages: https://stackoverflow.com/questions/44307988/find-all-occurrences-of-a-character-in-a-string
+    https://stackoverflow.com/questions/42565525/python-function-returning-different-list  
+- The above existing hangman game also gave me the idea for how to write the code to iterate through the hangman pictures. As a string cannot be modified, I would need to store an integer within another variable, the incorrect guess would update this integer which will specify the next hangman picture in the sequence to be called.
 - Guidance on string methods taken from W3Schools - https://www.w3schools.com/python/python_strings_methods.asp
 - Guidance for how to build code to count down guess attempts taken from Stack Overflow - https://stackoverflow.com/questions/23842115/how-to-tell-user-how-many-attempts-left-in-python
 - Guidance on how to convert a letter to a dash taken from Stack Overflow - https://stackoverflow.com/questions/61927022/how-to-convert-any-letter-into-a-dash-for-hangman-game
