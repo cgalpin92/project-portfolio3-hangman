@@ -170,6 +170,7 @@ random_word = None
 hidden_word = None
 game_play = True
 
+
 def start():
 
     """
@@ -201,7 +202,6 @@ def start():
             print("You must enter a username to proceed\n")
     print("\nRules Loading...\n")
     display_rules()
-    
 
 
 def display_rules():
@@ -224,18 +224,17 @@ def display_rules():
     print("To win the game you have to guess the correct word either within")
     print("20 attempts or before the Hangman picture is complete\n")
     while True:
-        play = input("Ready to Play? Enter y or n: \n")
-        if play.lower() == "y":
+        play = input("Ready to Play? Enter Y or N: \n")
+        if play.upper() == "Y":
             print("\nstarting game...\n")
             start_game()
             break
-        elif play.lower() == "n":
+        elif play.upper() == "N":
             print("Returning to home screen...")
             start()
             break
         else:
             print("You did not enter a valid answer. Please enter Y or N:")
-
 
 
 def start_game():
@@ -249,7 +248,6 @@ def start_game():
     hangman_picures = 0
     global attempts_taken
     attempts_taken = 0
-    
 
 
 def select_random_word():
@@ -276,7 +274,7 @@ def guess_input():
     """
     Function to check if the game play is true or false
     If true will create the input for player to enter their guess
-    If false game will end and the appropriate print statements 
+    If false game will end and the appropriate print statements
     will print for the player
     """
     global guess
@@ -301,13 +299,11 @@ def guess_input():
         print(f"You correctly guessed {random_word}\n")
         print("Game Over!!!\n")
         play_again()
-    while game_play is True:   
+    while game_play is True:
         print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
         guess = input("Enter Letter or Word Below: \n")
         guess = guess.lower()
         check_guess_input()
-
-
 
 
 def check_guess_input():
@@ -339,23 +335,28 @@ def check_guess_input():
                         used_letters += guess
                         update_hidden_word()
                     else:
-                        print("\nPlease enter either a single letter or the full word\n")
-                        guess_input()            
+                        print("\nPlease enter either a single letter")
+                        print("or the full word\n")
+                        guess_input()
                 else:
                     print("You must enter a letter\n")
                     guess_input()
         else:
-            print(f"you have already guessed {guess}\n")
-            print("try entering another letter\n")
+            print(f"\nyou have already guessed {guess}\n")
+            print(f"The letters you have guessed already are {used_letters}\n")
+            print("Try entering another letter\n")
             guess_input()
 
 
 def update_hidden_word():
     """
-    Function to update the hidden word if the player guesses the correct letter.
-    If the player guesses an incorrect letter the hangman pictures will start to build.
-    Section within if statement taken from Stack Overflow site - 
-    https://stackoverflow.com/questions/71621410/how-to-replace-more-than-one-occurrence-of-a-letter-in-list
+    Function to update the hidden word if the player
+    guesses the correct letter.
+    If the player guesses an incorrect letter the hangman
+    pictures will start to build.
+    Section within if statement taken from Stack Overflow site -
+    https://stackoverflow.com/questions/71621410/how-to-replace-
+    more-than-one-occurrence-of-a-letter-in-list
     """
     global hidden_word
     global build_pictures
@@ -388,9 +389,9 @@ def update_hidden_word():
             print(HANGMAN[build_pictures])
             print(f"letters guessed so far: {used_letters}\n")
             print(hidden_word)
-    guess_input()    
-    
-            
+    guess_input()
+
+
 def play_again():
     """
     Function to ask the player if they would like to play again after the game
@@ -439,7 +440,8 @@ def restart():
     game_play = True
     select_random_word()
     hide_random_word()
-    guess_input()  
+    guess_input()
+
 
 def main():
     """
@@ -449,6 +451,7 @@ def main():
     select_random_word()
     hide_random_word()
     guess_input()
-    
+
+
 if __name__ == "__main__":
     main()

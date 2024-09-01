@@ -139,7 +139,7 @@ Here is a live version of my project:
         - Attempted to fix this by adding an extra elif argument to the if statement to check the player is entering a letter. However this through errors up within the terminal and the game crashed.
         - After some searching for solutions online, fixed the error by changing the if statement within check_correct_answer() function.
             - Before the code runs to check if the letter is correct and updating the hidden word accourdingly, the code checks if the entery is the same as and equal to the random word, if it is it will print the entire word and the game will end. If it doesnt then it will proceed to check the letter within the elif statement and so on.
-            
+
     - fixed validation error for checking if user wants to play game:
         - When entering anything by Y within this input the game would proceed regardless
         - Fixed error by creating a while statement to loop round until either Y or N is entered.
@@ -187,7 +187,7 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
 
 ### Content
 - Words for computer to generate taken from Hangman Words - https://www.hangmanwords.com/words.
-- Tutorial on how to create the hangman gallows steps taken from Stack Exchange - https://codereview.stackexchange.com/questions/95997/simple-game-of-hangman
+- Tutorial on how to create the hangman picture steps taken from Stack Exchange - https://codereview.stackexchange.com/questions/95997/simple-game-of-hangman
 - Idea for displaying Rules as print statements taken from existing python hangman game - https://github.com/paulio11/P3-Hangman-Python-Terminal-Game/blob/main/run.py
 
 ### Code
