@@ -300,7 +300,7 @@ def guess_input():
         print("Contratulations!!!\n")
         print(f"You correctly guessed {random_word}\n")
         print("Game Over!!!\n")
-        remove_used_random_words()
+        update_used_words()
         play_again()
     while game_play is True:
         print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
@@ -351,7 +351,7 @@ def check_guess_input():
             print("Try entering another letter\n")
             guess_input()
 
-def remove_used_random_words():
+def update_used_words():
     """
     Removes the used random words selected from the words sheet and
     inputs them into the used sheet to ensure they are not selected again.
@@ -363,7 +363,6 @@ def remove_used_random_words():
     update_values = random_word.split()
     print(update_values)
     update_sheet.append_row(update_values)
-
 
 
 def update_hidden_word():
@@ -434,10 +433,20 @@ def play_again():
             print("Ending Game...")
             print(f"Goodby {username}")
             print("GAME ENDED")
+            clear_used_words()
             exit()
             break
         else:
             print("You did not enter a valid answer. Please enter Y or N:")
+
+def clear_used_words():
+    """
+    Once the games ends will remove the words from used words sheet
+    so that they can be re-selected when playing a new game
+    """
+    global update_sheet
+    update_sheet.delete_rows(2, 100)
+    print(update_sheet)
 
 
 def restart():
@@ -452,7 +461,7 @@ def restart():
     global used_letters
     global random_word
     global hidden_word
-    global game_play
+    global game_play    
     attempts_taken = 0
     attempts_left = 11
     build_pictures = 0
