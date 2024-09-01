@@ -324,23 +324,29 @@ def check_guess_input():
     global attempts_taken
     global used_letters
     global game_play
-    for i in guess:
-        if i.isalpha():
-            if len(guess) < 2:
-                print(f"\nYou entered {guess} \n")
-                attempts_taken += 1
-                used_letters += guess
-                update_hidden_word()
-            elif len(guess) == len(random_word):
-                print(f"\nYou entered {guess} \n")
-                attempts_taken += 1
-                used_letters += guess
-                update_hidden_word()
-            else:
-                print("\nPlease enter either a single letter or the full word\n")
-                guess_input()            
+    while True:
+        if guess not in used_letters:
+            for i in guess:
+                if i.isalpha():
+                    if len(guess) < 2:
+                        print(f"\nYou entered {guess} \n")
+                        attempts_taken += 1
+                        used_letters += guess
+                        update_hidden_word()
+                    elif len(guess) == len(random_word):
+                        print(f"\nYou entered {guess} \n")
+                        attempts_taken += 1
+                        used_letters += guess
+                        update_hidden_word()
+                    else:
+                        print("\nPlease enter either a single letter or the full word\n")
+                        guess_input()            
+                else:
+                    print("You must enter a letter\n")
+                    guess_input()
         else:
-            print("You must enter a letter\n")
+            print(f"you have already guessed {guess}\n")
+            print("try entering another letter\n")
             guess_input()
 
 
