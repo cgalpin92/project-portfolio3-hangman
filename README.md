@@ -94,7 +94,7 @@ The goal of the game is for the player to guess the word.
         ![image of end of game restarting](/assets/media/restarting.png)
 
         ![image of game ending](/assets/media/game-ending.png)
-        
+
 ### Future Features
 - I would like to add a scoreboard to record who wins each game - player or computer
 - I would like to add levels to the game so that the user can increase difficulty - longer letters to guess.
@@ -108,6 +108,11 @@ The goal of the game is for the player to guess the word.
  - I have used some global variables which will be modified as the game is played and that can be accessed by multiple functions.
  - Within the functions I have used while loops to run the continuation of the game and if statements to validate user inputs.
  - Below is the flowchart I created using Lucid to help organise the flow of the game and the creation of the parent and child functions.
+
+ ![image of entire lucid chart](/assets/media/lucid-chart.png)
+ ![image of zoomed in start of lucid chart](/assets/media/lucid-chart-1.png)
+ ![image of zoomed in second part of lucid chart](assets/media/lucid-chart-2.png)
+ ![image of zoomed in end of lucid chart](/assets/media/lucid-chart-3.png)
 
 ## Testing
 
