@@ -256,9 +256,10 @@ def select_random_word():
     Function for the computer to select a random word from googlesheets.
     """
     words = SHEET.worksheet('words')
-    all_words = words.col_values(1)
+    all_words = words.col_values(1)[1:]
     global random_word
     random_word = random.choice(all_words)
+    print(random_word)
 
 
 def hide_random_word():
