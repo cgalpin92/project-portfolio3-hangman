@@ -139,7 +139,10 @@ Here is a live version of my project:
         - Attempted to fix this by adding an extra elif argument to the if statement to check the player is entering a letter. However this through errors up within the terminal and the game crashed.
         - After some searching for solutions online, fixed the error by changing the if statement within check_correct_answer() function.
             - Before the code runs to check if the letter is correct and updating the hidden word accourdingly, the code checks if the entery is the same as and equal to the random word, if it is it will print the entire word and the game will end. If it doesnt then it will proceed to check the letter within the elif statement and so on.
+            
     - fixed validation error for checking if user wants to play game:
+        - When entering anything by Y within this input the game would proceed regardless
+        - Fixed error by creating a while statement to loop round until either Y or N is entered.
     
 - __Unfixed Bugs__
  - There are no unfixed bugs within this game.
