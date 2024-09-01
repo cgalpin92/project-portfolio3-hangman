@@ -223,15 +223,18 @@ def display_rules():
     print("After 11 incorrect guesses the Hangman picture will be complete\n")
     print("To win the game you have to guess the correct word either within")
     print("20 attempts or before the Hangman picture is complete\n")
-    play = input("Ready to Play? Enter y or n: \n")
-    if play.lower() == "y":
-        print("\nstarting game...\n")
-        start_game()
-    elif play.lower() == "n":
-        print("Returning to home screen...")
-        start_game()    
-    else:
-        print("You did not enter a valid answer. Please enter Y or N:")
+    while True:
+        play = input("Ready to Play? Enter y or n: \n")
+        if play.lower() == "y":
+            print("\nstarting game...\n")
+            start_game()
+            break
+        elif play.lower() == "n":
+            print("Returning to home screen...")
+            start()
+            break
+        else:
+            print("You did not enter a valid answer. Please enter Y or N:")
 
 
 
@@ -246,6 +249,7 @@ def start_game():
     hangman_picures = 0
     global attempts_taken
     attempts_taken = 0
+    
 
 
 def select_random_word():
@@ -299,7 +303,7 @@ def guess_input():
         play_again()
     while game_play is True:   
         print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
-        guess = input("Enter Letter Below: \n")
+        guess = input("Enter Letter or Word Below: \n")
         guess = guess.lower()
         check_guess_input()
 
@@ -333,12 +337,11 @@ def check_guess_input():
                 used_letters += guess
                 update_hidden_word()
             else:
-                print("Please enter either a single letter or the full word")
+                print("\nPlease enter either a single letter or the full word\n")
                 guess_input()            
         else:
             print("You must enter a letter\n")
             guess_input()
-
 
 
 def update_hidden_word():
@@ -393,16 +396,19 @@ def play_again():
     """
     print("Would you like to play again?\n")
     print("Enter Y for Yes or N for No\n")
-
-    answer_input = input("Y or N \n")
-    if answer_input.upper() == "Y":
-        print("restarting...")
-        restart()
-    elif answer_input.upper() == "N":
-        print(f"Thank you {username} for playing\n")
-        print("Ending Game...\n")
-    else:
-        print("You did not enter a valid answer, Please answer Y or N\n")
+    while True:
+        answer_input = input("Y or N \n").upper()
+        if answer_input == "Y":
+            print("\nRestarting Game...\n")
+            restart()
+            break
+        elif answer_input == "N":
+            print("Ending Game...")
+            print(f"Goodby {username}")
+            exit()
+            break
+        else:
+            print("You did not enter a valid answer. Please enter Y or N:")
 
 
 def restart():
