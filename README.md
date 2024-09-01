@@ -177,6 +177,11 @@ Here is a live version of my project:
         - The player guesses i
         - The game will return an incorrect statement regardless of the correct word because the letters of the word have been added to the used letters variable.
         - Fixed this issue by creating a new variable called used_words to hold incorrect guessed words, the validation of the check answer only checks against the used letters variable.
+
+    - Google Sheets column heading included in random word selection:
+        - Whilst running manual testing found that the heading for the list of random words that the code randomly selects from was being included within this selection.
+        - This was due to code stating all_words = words.col_values(1) - selecting all values within column one including the heading.
+        - Fixed this error through using list slicing. Code changed to all_words = word.col_values(1)[1:] which means select all values within column one starting from the second element (index 1)
     
 - __Unfixed Bugs__
  - There are no unfixed bugs within this game.
