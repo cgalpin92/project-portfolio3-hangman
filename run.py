@@ -293,12 +293,14 @@ def guess_input():
         print("The Hangman picture is complete\n")
         print(f"the word was {random_word}\n")
         print("Game Over!!!\n")
+        
         play_again()
     elif "-" not in hidden_word:
         game_play = False
         print("Contratulations!!!\n")
         print(f"You correctly guessed {random_word}\n")
         print("Game Over!!!\n")
+        remove_used_random_words()
         play_again()
     while game_play is True:
         print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
@@ -348,6 +350,20 @@ def check_guess_input():
             print(f"The letters you have guessed already are {used_letters}\n")
             print("Try entering another letter\n")
             guess_input()
+
+def remove_used_random_words():
+    """
+    Removes the used random words selected from the words sheet and
+    inputs them into the used sheet to ensure they are not selected again.
+    This will run until game ends
+    """
+    global update_sheet
+    global random_word
+    update_sheet = SHEET.worksheet('used')
+    update_values = random_word.split()
+    print(update_values)
+    update_sheet.append_row(update_values)
+
 
 
 def update_hidden_word():
