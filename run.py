@@ -218,7 +218,7 @@ def display_rules():
     print("or by entering an entire word (if you think you know it)\n")
     print("Enter any letter between 'a' and 'z' in the space provided\n")
     print("If you guess a correct letter or word, the computer will")
-    print("replace a dash within it's correct position within the word\n")
+    print("replace a dash with the word within it's correct position within the word\n")
     print("If you are wrong the Hangman picture will start to build\n")
     print("After 11 incorrect guesses the Hangman picture will be complete\n")
     print("To win the game you have to guess the correct word either within")
@@ -412,6 +412,7 @@ def play_again():
         elif answer_input == "N":
             print("Ending Game...")
             print(f"Goodby {username}")
+            print("GAME ENDED")
             exit()
             break
         else:
