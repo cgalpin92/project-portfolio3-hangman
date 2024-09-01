@@ -144,6 +144,13 @@ Here is a live version of my project:
     - fixed validation error for checking if user wants to play game:
         - When entering anything by Y within this input the game would proceed regardless
         - Fixed error by creating a while statement to loop round until either Y or N is entered.
+
+    - Cannot re-guess letter from word guessed:
+        - A word is guessed such as zigzag
+        - It returns an incorrect statement
+        - The player guesses i
+        - The game will return an incorrect statement regardless of the correct word because the letters of the word have been added to the used letters variable.
+        - Fixed this issue by creating a new variable called used_words to hold incorrect guessed words, the validation of the check answer only checks against the used letters variable.
     
 - __Unfixed Bugs__
  - There are no unfixed bugs within this game.
