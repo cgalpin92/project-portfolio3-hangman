@@ -166,10 +166,11 @@ attempts_taken = 0
 attempts_left = 11
 build_pictures = 0
 used_letters = []
-used_words = []
+guessed_words = []
 random_word = None
 hidden_word = None
 game_play = True
+
 
 
 def start():
@@ -300,7 +301,7 @@ def guess_input():
         print("Contratulations!!!\n")
         print(f"You correctly guessed {random_word}\n")
         print("Game Over!!!\n")
-        update_used_words()
+        update_guessed_words()
         play_again()
     while game_play is True:
         print(f'Attempts: {attempts_taken} out of {TOTAL_ATTEMPTS_ALLOWED}\n')
@@ -322,7 +323,7 @@ def check_guess_input():
     """
     global attempts_taken
     global used_letters
-    global used_words
+    global guessed_words
     global game_play
     while True:
         if guess not in used_letters:
@@ -336,7 +337,7 @@ def check_guess_input():
                     elif len(guess) == len(random_word):
                         print(f"\nYou entered {guess} \n")
                         attempts_taken += 1
-                        used_words += guess
+                        guessed_words += guess
                         update_hidden_word()
                     else:
                         print("\nPlease enter either a single letter")
@@ -380,7 +381,7 @@ def update_hidden_word():
     global attempts_left
     global attempts_taken
     global used_letters
-    global used_words
+    global guessed_words
     if guess == random_word:
         hidden_word = random_word
     elif guess in random_word:
@@ -395,7 +396,7 @@ def update_hidden_word():
         print(f"WELL DONE!! {guess} was correct\n")
         print(hidden_word)
         print(f"letters guessed so far: {used_letters}\n")
-        print(f"words guessed so far: {used_words}\n")
+        print(f"words guessed so far: {guessed_words}\n")
     else:
         """
         Guidance for building below code taken from above hangman game site
@@ -407,7 +408,7 @@ def update_hidden_word():
             attempts_left -= 1
             print(HANGMAN[build_pictures])
             print(f"letters guessed so far: {used_letters}\n")
-            print(f"words guessed so far: {used_words}\n")
+            print(f"words guessed so far: {guessed_words}\n")
             print(hidden_word)
     guess_input()
 
@@ -466,7 +467,7 @@ def restart():
     attempts_left = 11
     build_pictures = 0
     used_letters = []
-    used_words = []
+    guessed_words = []
     random_word = None
     hidden_word = None
     game_play = True
